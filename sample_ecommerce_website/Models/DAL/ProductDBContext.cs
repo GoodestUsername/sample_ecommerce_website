@@ -49,6 +49,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 15.12,
                     Category = "Sports Equipment",
                     Description = "Baseball Bat",
+                    Stock = 4,
                     DiscountID = null
                 },
                 new Product
@@ -58,6 +59,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 1123.11,
                     Category = "t-shirts",
                     Description = "Trendy T shirt",
+                    Stock = 10,
                     DiscountID = "IASDAFFASD"
                 },
                 new Product
@@ -67,6 +69,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 15.12,
                     Category = "Sports Equipment",
                     Description = "Tennis Racket",
+                    Stock = 3,
                     DiscountID = null
                 },
                 new Product
@@ -76,6 +79,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 13.11,
                     Category = "t-shirts",
                     Description = "Blue T shirt",
+                    Stock = 0,
                     DiscountID = "wqeqwrewtewtw"
                 },
                 new Product
@@ -85,6 +89,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 15.12,
                     Category = "Sports Equipment",
                     Description = "Soccer Ball",
+                    Stock = 7,
                     DiscountID = null
                 },
                 new Product
@@ -94,6 +99,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 12.11,
                     Category = "t-shirts",
                     Description = "Red T shirt",
+                    Stock = 9,
                     DiscountID = "nasdsajj"
                 },
                 new Product
@@ -103,6 +109,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 15.12,
                     Category = "Shoes",
                     Description = "A red shoe",
+                    Stock = 2,
                     DiscountID = null
                 },
                 new Product
@@ -112,6 +119,7 @@ namespace sample_ecommerce_website.Models.DAL
                     Price = 89.99,
                     Category = "computer equipment",
                     Description = "Gaming Mouse",
+                    Stock = 100,
                     DiscountID = null
                 }
             );

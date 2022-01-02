@@ -30,6 +30,9 @@ namespace sample_ecommerce_website.Models
         [Required(ErrorMessage = "Product description is required")]
         public string Description { get; set; }
 
+        // Product Stock (quantity)
+        [Required(ErrorMessage = "Product stock avalible is required")]
+        public int Stock { get; set; }
         // Product images
         public List<Image> Images { get; set; }
 
