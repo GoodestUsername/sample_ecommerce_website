@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
-namespace sample_ecommerce_website.Data.Migrations
+namespace sample_ecommerce_website.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,11 +47,27 @@ namespace sample_ecommerce_website.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ProductID = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    Category = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    DiscountID = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ProductID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +88,7 @@ namespace sample_ecommerce_website.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -153,6 +168,21 @@ namespace sample_ecommerce_website.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductID", "Category", "Description", "DiscountID", "Name", "Price" },
+                values: new object[,]
+                {
+                    { "asdfasdgafgdg", "Sports Equipment", "Baseball Bat", null, "BaseBall Bat", 15.119999999999999 },
+                    { "basdafgagasd", "t-shirts", "Trendy T shirt", "IASDAFFASD", "Trendy T shirt", 1123.1099999999999 },
+                    { "asdwrwdrwerew", "Sports Equipment", "Tennis Racket", null, "Tennis Racket", 15.119999999999999 },
+                    { "sdfsdsgsssaa", "t-shirts", "Blue T shirt", "wqeqwrewtewtw", "Blue T shirt", 13.109999999999999 },
+                    { "opiljuppoiop", "Sports Equipment", "Soccer Ball", null, "Soccer Ball", 15.119999999999999 },
+                    { "nnlhjhjhiy", "t-shirts", "Red T shirt", "nasdsajj", "Red T shirt", 12.109999999999999 },
+                    { "jhahasja", "Shoes", "A red shoe", null, "Red Shoe", 15.119999999999999 },
+                    { "asdjioasdos", "computer equipment", "Gaming Mouse", null, "Gaming Mouse", 89.989999999999995 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -209,6 +239,9 @@ namespace sample_ecommerce_website.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

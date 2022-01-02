@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using sample_ecommerce_website.Data;
+using sample_ecommerce_website.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +27,9 @@ namespace sample_ecommerce_website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddControllersWithViews();
+            services.AddDbContext<ProductDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
