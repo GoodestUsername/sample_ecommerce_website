@@ -30,6 +30,9 @@ namespace sample_ecommerce_website.Models
         [Required(ErrorMessage = "Product description is required")]
         public string Description { get; set; }
 
+        // Product images
+        public List<Image> Images { get; set; }
+
         public string DiscountID { get; set; }
     }
 }
