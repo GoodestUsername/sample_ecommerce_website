@@ -29,16 +29,16 @@ namespace sample_ecommerce_website.Models.DAL
             myModelBuilder.Entity<Image>(entity => { entity.HasOne(d => d.Product).WithMany(p => p.Images).HasForeignKey("ProductID"); });
 
             myModelBuilder.Entity<Image>().HasData(
-                new Image { ProductID = "asdfasdgafgdg", ImageID = "asdasdwe", ImageURL = "https://www.shutterstock.com/image-photo/wooden-baseball-bat-isolated-on-white-378948592" },
-                new Image { ProductID = "basdafgagasd", ImageID = "jkpafas", ImageURL = "https://www.shutterstock.com/image-vector/black-realistic-tshirt-front-view-isolated-1925573966" },
-                new Image { ProductID = "asdwrwdrwerew", ImageID = "ahnfkdh", ImageURL = "https://www.shutterstock.com/image-photo/new-tennis-racket-isolated-on-white-471436889" },
-                new Image { ProductID = "asdwrwdrwerew", ImageID = "iurheiu", ImageURL = "https://www.shutterstock.com/image-photo/tennis-racket-on-white-background-760686820" },
-                new Image { ProductID = "asdwrwdrwerew", ImageID = "sdyiueki", ImageURL = "https://www.shutterstock.com/image-vector/tennis-racket-silhouette-1075969826" },
-                new Image { ProductID = "sdfsdsgsssaa", ImageID = "zljshxdl", ImageURL = "https://www.shutterstock.com/image-photo/blue-blank-t-shirt-template-isolated-690352057" },
-                new Image { ProductID = "opiljuppoiop", ImageID = "dfkjndsf", ImageURL = "https://www.shutterstock.com/image-photo/soccer-ball-isolated-on-white-129557066" },
-                new Image { ProductID = "nnlhjhjhiy", ImageID = "gflsdhe", ImageURL = "https://www.shutterstock.com/image-photo/red-tshirt-clothes-on-isolated-white-618080519" },
-                new Image { ProductID = "jhahasja", ImageID = "asjkfnd", ImageURL = "https://www.shutterstock.com/image-photo/vintage-red-shoes-on-white-background-92008067" },
-                new Image { ProductID = "asdjioasdos", ImageID = "eqnasfdw", ImageURL = "https://www.shutterstock.com/image-photo/professional-wireless-game-mouse-on-dark-750226153" }
+                new Image { ProductID = "asdfasdgafgdg", ImageID = "asdasdwe", ImageURL = "https://cdn.pixabay.com/photo/2020/03/22/04/09/baseball-bat-4955795_960_720.png" },
+                new Image { ProductID = "basdafgagasd", ImageID = "jkpafas", ImageURL = "https://cdn.pixabay.com/photo/2012/04/14/16/20/t-shirt-34481_960_720.png" },
+                new Image { ProductID = "asdwrwdrwerew", ImageID = "ahnfkdh", ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/09/45/tennis-racket-155963_960_720.png" },
+                new Image { ProductID = "asdwrwdrwerew", ImageID = "iurheiu", ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/10/01/tennis-309621_960_720.png" },
+                new Image { ProductID = "asdwrwdrwerew", ImageID = "sdyiueki", ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/11/37/tennis-312002_960_720.png" },
+                new Image { ProductID = "sdfsdsgsssaa", ImageID = "zljshxdl", ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/14/07/apparel-162180_960_720.png" },
+                new Image { ProductID = "opiljuppoiop", ImageID = "dfkjndsf", ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_960_720.png" },
+                new Image { ProductID = "nnlhjhjhiy", ImageID = "gflsdhe", ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/14/08/apparel-162192_960_720.png" },
+                new Image { ProductID = "jhahasja", ImageID = "asjkfnd", ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/11/37/tennis-shoes-312023_960_720.png" },
+                new Image { ProductID = "asdjioasdos", ImageID = "eqnasfdw", ImageURL = "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" }
                 );
 
             myModelBuilder.Entity<Product>().HasData(

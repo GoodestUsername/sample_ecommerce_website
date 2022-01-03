@@ -21,8 +21,9 @@ namespace sample_ecommerce_website.Models
         [Required(ErrorMessage = "At least one image url is required")]
         public string ImageURL { get; set; }
 
-        public string ProductID { get; set; }
+        public virtual string ProductID { get; set; }
 
-        public Product Product { get; set; }
+        [ForeignKey("ProductID")]
+        public virtual Product Product { get; set; }
     }
 }

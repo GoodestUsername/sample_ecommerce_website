@@ -7,29 +7,43 @@
 @model List<Product>
 @{ ViewBag.Title = "Products Page"; }
 
-<h1>Campsite List</h1>
+<h1>Products</h1>
 
-<table class="table table-bordered table-striped">
+@foreach (var product in Model)
+{
+<div class="card" style="width: 18rem;">
+    <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+        <div class="card-img-top carousel-inner">
+            @foreach (var img in product.Images)
+            {
+                <div class="carousel-item active">
+                    <img src=@img.ImageURL
+                            class="d-block w-100"
+                            alt="Wild Landscape" />
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev"
+                type="button"
+                data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next"
+                type="button"
+                data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-         @foreach (var product in Model)
-         {
-            <tr>
-                <td>@product.Name</td>
-                <td>@product.Price</td>
-                <td>@product.Description</td>
-                <td>@product.Category</td>
-            </tr>
-         }
-    </tbody>
-</table>
-
+@*    <img class="card-img-top" src="@product.Images" alt="Card image cap">*@
+    <div class="card-body">
+        <a href="#"><h5 class="card-title">@product.Name</h5></a>
+        <p class="card-text">@product.Price</p>
+    </div>
+</div>
+}
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
@@ -30,7 +31,9 @@ namespace sample_ecommerce_website.Controllers
 
         public IActionResult ProductsView()
         {
+            MyContext.Products.Include(product => product.Images).ToList();
             var products = from p in MyContext.Products select p;
+
             return View(products.ToList());
         }
 

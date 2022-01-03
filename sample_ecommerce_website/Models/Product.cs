@@ -34,7 +34,7 @@ namespace sample_ecommerce_website.Models
         [Required(ErrorMessage = "Product stock avalible is required")]
         public int Stock { get; set; }
         // Product images
-        public List<Image> Images { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
 
         public string DiscountID { get; set; }
     }
