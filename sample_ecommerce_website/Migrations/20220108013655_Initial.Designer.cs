@@ -10,8 +10,8 @@ using sample_ecommerce_website.Models.DAL;
 namespace sample_ecommerce_website.Migrations
 {
     [DbContext(typeof(ProductDBContext))]
-    [Migration("20220102211253_Images")]
-    partial class Images
+    [Migration("20220108013655_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,63 +242,63 @@ namespace sample_ecommerce_website.Migrations
                     b.HasData(
                         new
                         {
-                            ImageID = "asdasdwe",
-                            ImageURL = "https://www.shutterstock.com/image-photo/wooden-baseball-bat-isolated-on-white-378948592",
-                            ProductID = "asdfasdgafgdg"
+                            ImageID = "1a70c6c0-95c3-46b7-a9a6-3abbc69ba1cf",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/e/e2/MeteoLDrago2.jpg/revision/latest/scale-to-width-down/350?cb=20210729012214",
+                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5"
                         },
                         new
                         {
-                            ImageID = "jkpafas",
-                            ImageURL = "https://www.shutterstock.com/image-vector/black-realistic-tshirt-front-view-isolated-1925573966",
-                            ProductID = "basdafgagasd"
+                            ImageID = "5fd6d1cc-6fe4-496f-8182-a264938eb7b6",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/e/ed/600px-BigBangPegasis.jpg/revision/latest/scale-to-width-down/1000?cb=20210729032512",
+                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453"
                         },
                         new
                         {
-                            ImageID = "ahnfkdh",
-                            ImageURL = "https://www.shutterstock.com/image-photo/new-tennis-racket-isolated-on-white-471436889",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "f81d5219-7f71-40d0-b4b1-5fb86c810c1f",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/c/ca/Fangleone.jpg/revision/latest?cb=20210729032300",
+                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249"
                         },
                         new
                         {
-                            ImageID = "iurheiu",
-                            ImageURL = "https://www.shutterstock.com/image-photo/tennis-racket-on-white-background-760686820",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "ccba718f-eda0-4b15-95c4-3579cc655150",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/e/e6/224466_10150260556836334_652091333_7652945_3113508_n.jpg/revision/latest/scale-to-width-down/350?cb=20210729020541",
+                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5"
                         },
                         new
                         {
-                            ImageID = "sdyiueki",
-                            ImageURL = "https://www.shutterstock.com/image-vector/tennis-racket-silhouette-1075969826",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "eeef3006-2ada-4811-97fc-e4ca42e336a8",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/b/b9/FlameLibra.jpg/revision/latest/scale-to-width-down/500?cb=20101216230749",
+                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c"
                         },
                         new
                         {
-                            ImageID = "zljshxdl",
-                            ImageURL = "https://www.shutterstock.com/image-photo/blue-blank-t-shirt-template-isolated-690352057",
-                            ProductID = "sdfsdsgsssaa"
+                            ImageID = "2767d0eb-5ac0-4709-872c-107d6b05af76",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/0/05/Diablonemesis.jpg/revision/latest/scale-to-width-down/1000?cb=20210729015755",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "dfkjndsf",
-                            ImageURL = "https://www.shutterstock.com/image-photo/soccer-ball-isolated-on-white-129557066",
-                            ProductID = "opiljuppoiop"
+                            ImageID = "bf3be07b-d65e-4796-8aff-d2b9315fe9ec",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/b/bb/BeybladeLegendsDiabloNemesisXD.png/revision/latest?cb=20140829221511",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "gflsdhe",
-                            ImageURL = "https://www.shutterstock.com/image-photo/red-tshirt-clothes-on-isolated-white-618080519",
-                            ProductID = "nnlhjhjhiy"
+                            ImageID = "951bc77e-9d11-4ffa-8452-e8185bcf6f08",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/6/62/DiabloNemesisXDTTBox.jpg/revision/latest/scale-to-width-down/1000?cb=20210615224907",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "asjkfnd",
-                            ImageURL = "https://www.shutterstock.com/image-photo/vintage-red-shoes-on-white-background-92008067",
-                            ProductID = "jhahasja"
+                            ImageID = "f1311d0c-78f1-492c-9f90-a5f9d62c988e",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/2/22/GravityPerseus.jpg/revision/latest?cb=20210729011724",
+                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69"
                         },
                         new
                         {
-                            ImageID = "eqnasfdw",
-                            ImageURL = "https://www.shutterstock.com/image-photo/professional-wireless-game-mouse-on-dark-750226153",
-                            ProductID = "asdjioasdos"
+                            ImageID = "194ac58f-c2a4-43b6-9d08-6a324a040350",
+                            ImageURL = "https://static.wikia.nocookie.net/beyblade/images/1/1d/5-018.jpg/revision/latest/scale-to-width-down/350?cb=20130201061230",
+                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358"
                         });
                 });
 
@@ -325,6 +325,9 @@ namespace sample_ecommerce_website.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductID");
 
                     b.ToTable("Products");
@@ -332,70 +335,76 @@ namespace sample_ecommerce_website.Migrations
                     b.HasData(
                         new
                         {
-                            ProductID = "asdfasdgafgdg",
-                            Category = "Sports Equipment",
-                            Description = "Baseball Bat",
-                            Name = "BaseBall Bat",
-                            Price = 15.119999999999999
+                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Meteo L-Drago LW105LF",
+                            Name = "Meteo L-Drago LW105LF",
+                            Price = 69.989999999999995,
+                            Stock = 4
                         },
                         new
                         {
-                            ProductID = "basdafgagasd",
-                            Category = "t-shirts",
-                            Description = "Trendy T shirt",
-                            DiscountID = "IASDAFFASD",
-                            Name = "Trendy T shirt",
-                            Price = 1123.1099999999999
+                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Cosmic Pegasus F:D",
+                            Name = "Cosmic Pegasus F:D",
+                            Price = 69.989999999999995,
+                            Stock = 10
                         },
                         new
                         {
-                            ProductID = "asdwrwdrwerew",
-                            Category = "Sports Equipment",
-                            Description = "Tennis Racket",
-                            Name = "Tennis Racket",
-                            Price = 15.119999999999999
+                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Fang Leone",
+                            Name = "Fang Leone 130W2D",
+                            Price = 69.989999999999995,
+                            Stock = 3
                         },
                         new
                         {
-                            ProductID = "sdfsdsgsssaa",
-                            Category = "t-shirts",
-                            Description = "Blue T shirt",
+                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Blitz Striker 100RSF ",
                             DiscountID = "wqeqwrewtewtw",
-                            Name = "Blue T shirt",
-                            Price = 13.109999999999999
+                            Name = "Blitz Striker 100RSF",
+                            Price = 69.989999999999995,
+                            Stock = 0
                         },
                         new
                         {
-                            ProductID = "opiljuppoiop",
-                            Category = "Sports Equipment",
-                            Description = "Soccer Ball",
-                            Name = "Soccer Ball",
-                            Price = 15.119999999999999
+                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Flame Libra T125ES ",
+                            Name = "Flame Libra T125ES",
+                            Price = 69.989999999999995,
+                            Stock = 7
                         },
                         new
                         {
-                            ProductID = "nnlhjhjhiy",
-                            Category = "t-shirts",
-                            Description = "Red T shirt",
-                            DiscountID = "nasdsajj",
-                            Name = "Red T shirt",
-                            Price = 12.109999999999999
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Diablo Nemesis X:D",
+                            Name = "Diablo Nemesis X:D",
+                            Price = 69.989999999999995,
+                            Stock = 9
                         },
                         new
                         {
-                            ProductID = "jhahasja",
-                            Category = "Shoes",
-                            Description = "A red shoe",
-                            Name = "Red Shoe",
-                            Price = 15.119999999999999
+                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Gravity Destroyer AD145WD",
+                            Name = "Gravity Destroyer AD145WD",
+                            Price = 69.989999999999995,
+                            Stock = 2
                         },
                         new
                         {
-                            ProductID = "asdjioasdos",
-                            Category = "computer equipment",
-                            Description = "Gaming Mouse",
-                            Name = "Gaming Mouse",
-                            Price = 89.989999999999995
+                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Hades Kerbecs BD145DS",
+                            Name = "Hades Kerbecs BD145DS",
+                            Price = 69.989999999999995,
+                            Stock = 100
                         });
                 });
 

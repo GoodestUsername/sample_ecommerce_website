@@ -13,7 +13,7 @@ namespace sample_ecommerce_website.Models
     public class ShoppingCart
     {
         // id of shopping cart
-        [Required(ErrorMessage = "ID is required")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string CartID { get; set; }
 
         // total value of the cart

@@ -240,63 +240,63 @@ namespace sample_ecommerce_website.Migrations
                     b.HasData(
                         new
                         {
-                            ImageID = "asdasdwe",
-                            ImageURL = "https://cdn.pixabay.com/photo/2020/03/22/04/09/baseball-bat-4955795_960_720.png",
-                            ProductID = "asdfasdgafgdg"
+                            ImageID = "1a70c6c0-95c3-46b7-a9a6-3abbc69ba1cf",
+                            ImageURL = "https://ae01.alicdn.com/kf/HTB1ZZ8GKFXXXXb3aXXXq6xXFXXX0/Bayblades-Spinning-Top-METAL-FUSION-BB88-METEO-L-DRAGO-LW105LF-Launchers-L-R-Double.jpg",
+                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5"
                         },
                         new
                         {
-                            ImageID = "jkpafas",
-                            ImageURL = "https://cdn.pixabay.com/photo/2012/04/14/16/20/t-shirt-34481_960_720.png",
-                            ProductID = "basdafgagasd"
+                            ImageID = "5fd6d1cc-6fe4-496f-8182-a264938eb7b6",
+                            ImageURL = "https://ae01.alicdn.com/kf/HTB1IcGmcxiH3KVjSZPfq6xBiVXaO/oMoToys-Beyblades-Big-Bang-Pegasis-BB105-Metal-4D-System-Cosmic-Pegasus-F-D-with-Launcher-Pack.jpg_Q90.jpg_.webp",
+                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453"
                         },
                         new
                         {
-                            ImageID = "ahnfkdh",
-                            ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/09/45/tennis-racket-155963_960_720.png",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "f81d5219-7f71-40d0-b4b1-5fb86c810c1f",
+                            ImageURL = "http://images5.fanpop.com/image/photos/30900000/Random-4D-beyblades-beyblade-metal-fury-30966056-379-335.jpg",
+                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249"
                         },
                         new
                         {
-                            ImageID = "iurheiu",
-                            ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/10/01/tennis-309621_960_720.png",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "ccba718f-eda0-4b15-95c4-3579cc655150",
+                            ImageURL = "https://m.media-amazon.com/images/I/51v6c-NAPHL._AC_.jpg",
+                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5"
                         },
                         new
                         {
-                            ImageID = "sdyiueki",
-                            ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/11/37/tennis-312002_960_720.png",
-                            ProductID = "asdwrwdrwerew"
+                            ImageID = "eeef3006-2ada-4811-97fc-e4ca42e336a8",
+                            ImageURL = "https://i5.walmartimages.com/asr/b2f830f2-c6df-4262-a764-ab65cccc2b2d.3e80a3fbe05918fe7e59e91b15e8ab2a.jpeg",
+                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c"
                         },
                         new
                         {
-                            ImageID = "zljshxdl",
-                            ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/14/07/apparel-162180_960_720.png",
-                            ProductID = "sdfsdsgsssaa"
+                            ImageID = "bf3be07b-d65e-4796-8aff-d2b9315fe9ec",
+                            ImageURL = "https://i.ebayimg.com/00/s/MTE3NlgxMTc2/z/ZBsAAOSwWWxY-cVZ/$_12.JPG",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "dfkjndsf",
-                            ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_960_720.png",
-                            ProductID = "opiljuppoiop"
+                            ImageID = "951bc77e-9d11-4ffa-8452-e8185bcf6f08",
+                            ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/386/1664/DiabloNemesisTakara1NWM__38445.1587767442.jpg?c=2",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "gflsdhe",
-                            ImageURL = "https://cdn.pixabay.com/photo/2013/07/13/14/08/apparel-162192_960_720.png",
-                            ProductID = "nnlhjhjhiy"
+                            ImageID = "2767d0eb-5ac0-4709-872c-107d6b05af76",
+                            ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/414/827/s-l1600__21220.1535822191.jpg?c=2",
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "asjkfnd",
-                            ImageURL = "https://cdn.pixabay.com/photo/2014/04/03/11/37/tennis-shoes-312023_960_720.png",
-                            ProductID = "jhahasja"
+                            ImageID = "f1311d0c-78f1-492c-9f90-a5f9d62c988e",
+                            ImageURL = "https://images-na.ssl-images-amazon.com/images/I/71k4SkSUIIL._AC_SL1500_.jpg",
+                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69"
                         },
                         new
                         {
-                            ImageID = "eqnasfdw",
-                            ImageURL = "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png",
-                            ProductID = "asdjioasdos"
+                            ImageID = "194ac58f-c2a4-43b6-9d08-6a324a040350",
+                            ImageURL = "https://i.ebayimg.com/images/g/jKQAAOSwc2dfbBIH/s-l640.jpg",
+                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358"
                         });
                 });
 
@@ -333,77 +333,75 @@ namespace sample_ecommerce_website.Migrations
                     b.HasData(
                         new
                         {
-                            ProductID = "asdfasdgafgdg",
-                            Category = "Sports Equipment",
-                            Description = "Baseball Bat",
-                            Name = "BaseBall Bat",
-                            Price = 15.119999999999999,
+                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Meteo L-Drago LW105LF",
+                            Name = "Meteo L-Drago LW105LF",
+                            Price = 69.989999999999995,
                             Stock = 4
                         },
                         new
                         {
-                            ProductID = "basdafgagasd",
-                            Category = "t-shirts",
-                            Description = "Trendy T shirt",
-                            DiscountID = "IASDAFFASD",
-                            Name = "Trendy T shirt",
-                            Price = 1123.1099999999999,
+                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Cosmic Pegasus F:D",
+                            Name = "Cosmic Pegasus F:D",
+                            Price = 69.989999999999995,
                             Stock = 10
                         },
                         new
                         {
-                            ProductID = "asdwrwdrwerew",
-                            Category = "Sports Equipment",
-                            Description = "Tennis Racket",
-                            Name = "Tennis Racket",
-                            Price = 15.119999999999999,
+                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Fang Leone",
+                            Name = "Fang Leone 130W2D",
+                            Price = 69.989999999999995,
                             Stock = 3
                         },
                         new
                         {
-                            ProductID = "sdfsdsgsssaa",
-                            Category = "t-shirts",
-                            Description = "Blue T shirt",
+                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Blitz Striker 100RSF ",
                             DiscountID = "wqeqwrewtewtw",
-                            Name = "Blue T shirt",
-                            Price = 13.109999999999999,
+                            Name = "Blitz Striker 100RSF",
+                            Price = 69.989999999999995,
                             Stock = 0
                         },
                         new
                         {
-                            ProductID = "opiljuppoiop",
-                            Category = "Sports Equipment",
-                            Description = "Soccer Ball",
-                            Name = "Soccer Ball",
-                            Price = 15.119999999999999,
+                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Flame Libra T125ES ",
+                            Name = "Flame Libra T125ES",
+                            Price = 69.989999999999995,
                             Stock = 7
                         },
                         new
                         {
-                            ProductID = "nnlhjhjhiy",
-                            Category = "t-shirts",
-                            Description = "Red T shirt",
-                            DiscountID = "nasdsajj",
-                            Name = "Red T shirt",
-                            Price = 12.109999999999999,
+                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Diablo Nemesis X:D",
+                            Name = "Diablo Nemesis X:D",
+                            Price = 69.989999999999995,
                             Stock = 9
                         },
                         new
                         {
-                            ProductID = "jhahasja",
-                            Category = "Shoes",
-                            Description = "A red shoe",
-                            Name = "Red Shoe",
-                            Price = 15.119999999999999,
+                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Gravity Destroyer AD145WD",
+                            Name = "Gravity Destroyer AD145WD",
+                            Price = 69.989999999999995,
                             Stock = 2
                         },
                         new
                         {
-                            ProductID = "asdjioasdos",
-                            Category = "computer equipment",
-                            Description = "Gaming Mouse",
-                            Name = "Gaming Mouse",
-                            Price = 89.989999999999995,
+                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358",
+                            Category = "Metal Fusion Beyblade",
+                            Description = "Hades Kerbecs BD145DS",
+                            Name = "Hades Kerbecs BD145DS",
+                            Price = 69.989999999999995,
                             Stock = 100
                         });
                 });

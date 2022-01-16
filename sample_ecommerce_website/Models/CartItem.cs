@@ -12,7 +12,7 @@ namespace sample_ecommerce_website.Models
 {
     public class CartItem
     {
-        [Required(ErrorMessage = "ID is required")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string cart_item_id;
 
         public int quantity;

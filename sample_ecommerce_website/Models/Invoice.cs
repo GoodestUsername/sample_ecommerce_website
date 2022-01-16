@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace sample_ecommerce_website.Models
 {
-    public class invoice
+    public class Invoice
     {
     }
 }

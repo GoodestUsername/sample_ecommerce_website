@@ -55,6 +55,7 @@ namespace sample_ecommerce_website.Migrations
                     Price = table.Column<double>(nullable: false),
                     Category = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
+                    Stock = table.Column<int>(nullable: false),
                     DiscountID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -168,19 +169,55 @@ namespace sample_ecommerce_website.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageID = table.Column<string>(nullable: false),
+                    ImageURL = table.Column<string>(nullable: false),
+                    ProductID = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageID);
+                    table.ForeignKey(
+                        name: "FK_Images_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "ProductID", "Category", "Description", "DiscountID", "Name", "Price" },
+                columns: new[] { "ProductID", "Category", "Description", "DiscountID", "Name", "Price", "Stock" },
                 values: new object[,]
                 {
-                    { "asdfasdgafgdg", "Sports Equipment", "Baseball Bat", null, "BaseBall Bat", 15.119999999999999 },
-                    { "basdafgagasd", "t-shirts", "Trendy T shirt", "IASDAFFASD", "Trendy T shirt", 1123.1099999999999 },
-                    { "asdwrwdrwerew", "Sports Equipment", "Tennis Racket", null, "Tennis Racket", 15.119999999999999 },
-                    { "sdfsdsgsssaa", "t-shirts", "Blue T shirt", "wqeqwrewtewtw", "Blue T shirt", 13.109999999999999 },
-                    { "opiljuppoiop", "Sports Equipment", "Soccer Ball", null, "Soccer Ball", 15.119999999999999 },
-                    { "nnlhjhjhiy", "t-shirts", "Red T shirt", "nasdsajj", "Red T shirt", 12.109999999999999 },
-                    { "jhahasja", "Shoes", "A red shoe", null, "Red Shoe", 15.119999999999999 },
-                    { "asdjioasdos", "computer equipment", "Gaming Mouse", null, "Gaming Mouse", 89.989999999999995 }
+                    { "7bfd10ec-b1da-4aca-9271-6731715455a5", "Metal Fusion Beyblade", "Meteo L-Drago LW105LF", null, "Meteo L-Drago LW105LF", 69.989999999999995, 4 },
+                    { "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453", "Metal Fusion Beyblade", "Cosmic Pegasus F:D", null, "Cosmic Pegasus F:D", 69.989999999999995, 10 },
+                    { "052cab8c-985e-4818-8fb8-ffb5d4a10249", "Metal Fusion Beyblade", "Fang Leone", null, "Fang Leone 130W2D", 69.989999999999995, 3 },
+                    { "714e4da1-6b46-49df-87fb-7d20b55175a5", "Metal Fusion Beyblade", "Blitz Striker 100RSF ", "wqeqwrewtewtw", "Blitz Striker 100RSF", 69.989999999999995, 0 },
+                    { "d549e4fe-bb29-476d-a3ae-c7533c44773c", "Metal Fusion Beyblade", "Flame Libra T125ES ", null, "Flame Libra T125ES", 69.989999999999995, 7 },
+                    { "66b879cf-637f-4f29-843d-03a60e35d9e5", "Metal Fusion Beyblade", "Diablo Nemesis X:D", null, "Diablo Nemesis X:D", 69.989999999999995, 9 },
+                    { "464aa345-82ef-4e6b-98b4-ea5e6db4ac69", "Metal Fusion Beyblade", "Gravity Destroyer AD145WD", null, "Gravity Destroyer AD145WD", 69.989999999999995, 2 },
+                    { "463005ef-ba02-4ac4-b369-eaf5db49b358", "Metal Fusion Beyblade", "Hades Kerbecs BD145DS", null, "Hades Kerbecs BD145DS", 69.989999999999995, 100 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Images",
+                columns: new[] { "ImageID", "ImageURL", "ProductID" },
+                values: new object[,]
+                {
+                    { "1a70c6c0-95c3-46b7-a9a6-3abbc69ba1cf", "https://static.wikia.nocookie.net/beyblade/images/e/e2/MeteoLDrago2.jpg/revision/latest/scale-to-width-down/350?cb=20210729012214", "7bfd10ec-b1da-4aca-9271-6731715455a5" },
+                    { "5fd6d1cc-6fe4-496f-8182-a264938eb7b6", "https://static.wikia.nocookie.net/beyblade/images/e/ed/600px-BigBangPegasis.jpg/revision/latest/scale-to-width-down/1000?cb=20210729032512", "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453" },
+                    { "f81d5219-7f71-40d0-b4b1-5fb86c810c1f", "https://static.wikia.nocookie.net/beyblade/images/c/ca/Fangleone.jpg/revision/latest?cb=20210729032300", "052cab8c-985e-4818-8fb8-ffb5d4a10249" },
+                    { "ccba718f-eda0-4b15-95c4-3579cc655150", "https://static.wikia.nocookie.net/beyblade/images/e/e6/224466_10150260556836334_652091333_7652945_3113508_n.jpg/revision/latest/scale-to-width-down/350?cb=20210729020541", "714e4da1-6b46-49df-87fb-7d20b55175a5" },
+                    { "eeef3006-2ada-4811-97fc-e4ca42e336a8", "https://static.wikia.nocookie.net/beyblade/images/b/b9/FlameLibra.jpg/revision/latest/scale-to-width-down/500?cb=20101216230749", "d549e4fe-bb29-476d-a3ae-c7533c44773c" },
+                    { "2767d0eb-5ac0-4709-872c-107d6b05af76", "https://static.wikia.nocookie.net/beyblade/images/0/05/Diablonemesis.jpg/revision/latest/scale-to-width-down/1000?cb=20210729015755", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
+                    { "bf3be07b-d65e-4796-8aff-d2b9315fe9ec", "https://static.wikia.nocookie.net/beyblade/images/b/bb/BeybladeLegendsDiabloNemesisXD.png/revision/latest?cb=20140829221511", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
+                    { "951bc77e-9d11-4ffa-8452-e8185bcf6f08", "https://static.wikia.nocookie.net/beyblade/images/6/62/DiabloNemesisXDTTBox.jpg/revision/latest/scale-to-width-down/1000?cb=20210615224907", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
+                    { "f1311d0c-78f1-492c-9f90-a5f9d62c988e", "https://static.wikia.nocookie.net/beyblade/images/2/22/GravityPerseus.jpg/revision/latest?cb=20210729011724", "464aa345-82ef-4e6b-98b4-ea5e6db4ac69" },
+                    { "194ac58f-c2a4-43b6-9d08-6a324a040350", "https://static.wikia.nocookie.net/beyblade/images/1/1d/5-018.jpg/revision/latest/scale-to-width-down/350?cb=20130201061230", "463005ef-ba02-4ac4-b369-eaf5db49b358" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -221,6 +258,11 @@ namespace sample_ecommerce_website.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_ProductID",
+                table: "Images",
+                column: "ProductID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -241,13 +283,16 @@ namespace sample_ecommerce_website.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }
