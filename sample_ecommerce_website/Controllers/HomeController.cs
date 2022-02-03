@@ -18,9 +18,9 @@ namespace sample_ecommerce_website.Controllers
         {
             _logger = logger;
         }*/
-        private ProductDBContext MyContext { get; set; }
+        private ProductDBModel MyContext { get; set; }
 
-        public HomeController(ProductDBContext context)
+        public HomeController(ProductDBModel context)
         {
             MyContext = context;
         }

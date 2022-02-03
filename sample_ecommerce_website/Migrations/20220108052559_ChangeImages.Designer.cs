@@ -9,7 +9,7 @@ using sample_ecommerce_website.Models.DAL;
 
 namespace sample_ecommerce_website.Migrations
 {
-    [DbContext(typeof(ProductDBContext))]
+    [DbContext(typeof(ProductDBModel))]
     [Migration("20220108052559_ChangeImages")]
     partial class ChangeImages
     {

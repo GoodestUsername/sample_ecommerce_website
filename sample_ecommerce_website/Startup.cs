@@ -28,8 +28,8 @@ namespace sample_ecommerce_website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ProductDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBContext>();
+            services.AddDbContext<ProductDBModel>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBModel>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

@@ -8,7 +8,7 @@ using sample_ecommerce_website.Models.DAL;
 
 namespace sample_ecommerce_website.Migrations
 {
-    [DbContext(typeof(ProductDBContext))]
+    [DbContext(typeof(ProductDBModel))]
     partial class ProductDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -222,6 +222,7 @@ namespace sample_ecommerce_website.Migrations
             modelBuilder.Entity("sample_ecommerce_website.Models.Image", b =>
                 {
                     b.Property<string>("ImageID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ImageURL")
@@ -300,33 +301,102 @@ namespace sample_ecommerce_website.Migrations
                         });
                 });
 
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderDetails", b =>
+                {
+                    b.Property<string>("OrderDetailsID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BillingAddressAddressID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("OrderModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ShippingAddressAddressID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OrderDetailsID");
+
+                    b.HasIndex("BillingAddressAddressID");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("ShippingAddressAddressID");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderItem", b =>
+                {
+                    b.Property<string>("OrderItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OrderDetailsID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ProductID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderItemID");
+
+                    b.HasIndex("OrderDetailsID");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("sample_ecommerce_website.Models.Product", b =>
                 {
                     b.Property<string>("ProductID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("DiscountID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<double>("Price")
-                        .HasColumnType("float");
+                        .HasColumnType("float")
+                        .HasMaxLength(255);
+
+                    b.Property<Guid?>("ShoppingCartId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.HasKey("ProductID");
+
+                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("Products");
 
@@ -406,6 +476,152 @@ namespace sample_ecommerce_website.Migrations
                         });
                 });
 
+            modelBuilder.Entity("sample_ecommerce_website.Models.ShoppingCart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CartID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BillingAddressAddressID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("HomeAddressAddressID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNum")
+                        .HasColumnType("int")
+                        .HasMaxLength(24);
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShippingAddressAddressID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillingAddressAddressID");
+
+                    b.HasIndex("HomeAddressAddressID");
+
+                    b.HasIndex("ShippingAddressAddressID");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.UserAddress", b =>
+                {
+                    b.Property<string>("AddressID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.HasKey("AddressID");
+
+                    b.ToTable("UserAddresses");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -462,6 +678,61 @@ namespace sample_ecommerce_website.Migrations
                     b.HasOne("sample_ecommerce_website.Models.Product", "Product")
                         .WithMany("Images")
                         .HasForeignKey("ProductID");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderDetails", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "BillingAddress")
+                        .WithMany()
+                        .HasForeignKey("BillingAddressAddressID");
+
+                    b.HasOne("sample_ecommerce_website.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressID");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderItem", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.OrderDetails", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderDetailsID");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.Product", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.ShoppingCart", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("ShoppingCartId");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.ShoppingCart", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.User", "User")
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("sample_ecommerce_website.Models.ShoppingCart", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.User", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "BillingAddress")
+                        .WithMany()
+                        .HasForeignKey("BillingAddressAddressID");
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "HomeAddress")
+                        .WithMany()
+                        .HasForeignKey("HomeAddressAddressID");
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressID");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,11 @@ namespace sample_ecommerce_website.Models
 {
     public class UserAddress
     {
+        // Address Details ID
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string AddressID { get; set; }
+
         [PersonalData]
         [StringLength(100)]
         [Display(Name = "Address")]
@@ -30,30 +36,21 @@ namespace sample_ecommerce_website.Models
         public string City { get; set; }
 
         [PersonalData]
-        [StringLength(100)]
-        [Display(Name = "State/Province")]
-        [Required(ErrorMessage = "State is required")]
-        public string StateEquivalent { get; set; }
+        [StringLength(60)]
+        [Display(Name = "Province")]
+        [Required(ErrorMessage = "Province is required")]
+        public string Province { get; set; }
 
         [PersonalData]
-        [StringLength(100)]
+        [StringLength(10)]
         [Display(Name = "Postal code")]
         [Required(ErrorMessage = "Postal code is required")]
         public string PostalCode { get; set; }
 
         [PersonalData]
-        [StringLength(100)]
+        [StringLength(60)]
         [Display(Name = "Country")]
         [Required(ErrorMessage = "Country is required")]
         public string Country { get; set; }
-
-        [PersonalData]
-        [StringLength(100)]
-        [Display(Name = "Phone number")]
-        public int HomePhone { get; set; }
-
-        [PersonalData]
-        [Display(Name = "Mobile phone number")]
-        public int MobilePhone { get; set; }
     }
 }

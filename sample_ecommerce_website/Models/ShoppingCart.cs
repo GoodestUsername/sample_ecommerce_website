@@ -30,6 +30,6 @@ namespace sample_ecommerce_website.Models
         public virtual User User { get; set; }
 
         // items in the card
-        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<Product> CartItems { get; set; }
     }
 }

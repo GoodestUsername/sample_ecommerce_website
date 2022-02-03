@@ -14,20 +14,36 @@ namespace sample_ecommerce_website.Models.DAL
     /// <summary>
     /// DB context class
     /// </summary>
-    public class ProductDBContext : IdentityDbContext
+    public class ProductDBModel : IdentityDbContext
     {
-        public ProductDBContext(DbContextOptions<ProductDBContext> options) : base(options)
+        public ProductDBModel(DbContextOptions<ProductDBModel> options) : base(options)
         { }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Image> Images { get; set; }
-
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<ShoppingCart> Carts { get; set; }
+        public virtual DbSet<OrderDetails> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<UserAddress> UserAddresses { get; set; }
         protected override void OnModelCreating(ModelBuilder myModelBuilder)
         {
             base.OnModelCreating(myModelBuilder);
 
-            myModelBuilder.Entity<Image>(entity => { entity.HasOne(d => d.Product).WithMany(p => p.Images).HasForeignKey("ProductID"); });
-            
+            myModelBuilder.Entity<Image>(   
+                entity => { 
+                    entity.HasOne(d => d.Product)
+                          .WithMany(p => p.Images)
+                          .HasForeignKey("ProductID"); 
+                    }
+                );
+            myModelBuilder.Entity<OrderItem>(
+                entity => {
+                    entity.HasOne(d => d.Order)
+                          .WithMany(p => p.OrderItems)
+                          .HasForeignKey("OrderDetailsID");
+                    }
+                );
+
             string LDragoID = "7bfd10ec-b1da-4aca-9271-6731715455a5";
             string CPegasusID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453";
             string FLeoneID = "052cab8c-985e-4818-8fb8-ffb5d4a10249";
