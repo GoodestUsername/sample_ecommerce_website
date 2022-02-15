@@ -10,10 +10,9 @@ namespace sample_ecommerce_website.Models
 {
     public class OrderDetails
     {
-        // Order Details ID
-        [Key]
+        // Order Details Id
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string OrderDetailsID { get; set; }
+        public virtual string OrderDetailsId { get; set; }
 
         // the total cost of the order
         public virtual int Cost { get; set; }
@@ -29,19 +28,19 @@ namespace sample_ecommerce_website.Models
 
         public virtual UserAddress ShippingAddress { get; set; }
 
-        // Payment provider
-        public string Provider { get; }
+        // Payment provIder
+        public virtual string Provider { get; }
 
         // Status of the payment
-        public string Status { get; set; }
+        public virtual string Status { get; set; }
 
         // time and date order was created
-        public DateTime OrderCreationDate { get; }
+        public virtual DateTime OrderCreationDate { get; }
 
         // time and date order was last modified
-        public DateTime OrderModificationDate { get; set; }
+        public virtual DateTime OrderModificationDate { get; set; }
 
-        // items in the card
+        // items in the cart
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

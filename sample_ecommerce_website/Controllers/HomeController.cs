@@ -26,7 +26,11 @@ namespace sample_ecommerce_website.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var r = new Random();
+            var HomePageDisplayProducts = MyContext.Products.Take(4);
+            HomePageDisplayProducts.Include(product => product.Images).ToList();
+
+            return View(HomePageDisplayProducts.ToList());
         }
 
         public IActionResult ProductsView()

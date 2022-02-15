@@ -18,13 +18,13 @@ namespace sample_ecommerce_website.Models
         [StringLength(200)]
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name is required")]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         [PersonalData]
         [StringLength(200)]
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Last Name is required")]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
         [PersonalData]
         [DisplayName("Email Address")]
@@ -37,13 +37,13 @@ namespace sample_ecommerce_website.Models
         [PersonalData]
         [StringLength(24)]
         [Display(Name = "Phone Number")]
-        public int PhoneNum { get; set; }
+        public virtual int PhoneNum { get; set; }
 
         // Account created date
         [PersonalData]
         [Display(Name = "Account Creation Date")]
-
         public DateTime CreationDate { get; set; }
+
         [PersonalData]
         [Display(Name = "Home Address")]
         public virtual UserAddress HomeAddress { get; set; }

@@ -9,21 +9,20 @@ namespace sample_ecommerce_website.Models
 {
     public class OrderItem
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string OrderItemID { get; set; }
+        public virtual string OrderItemId { get; set; }
 
-        public int Quantity { get; set; }
+        public virtual int Quantity { get; set; }
 
-        public string ProductID { get; set; }
+        public virtual string ProductId { get; set; }
 
-        public double Price { get; set; }
+        public virtual double Price { get; set; }
 
         // Foreign Key
-        public virtual string OrderDetailsID { get; set; }
+        public virtual string OrderDetailsId { get; set; }
 
         // Order the item is associated with.
-        [ForeignKey("OrderDetailsID")]
+        [ForeignKey("OrderDetailsId")]
         public virtual OrderDetails Order { get; set; }
     }
 }

@@ -12,9 +12,8 @@ namespace sample_ecommerce_website.Models
     public class Product
     {
         // Product ID
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ProductID { get; set; }
+        public string ProductId { get; set; }
 
         // Product name
         [StringLength(255)]
@@ -46,6 +45,6 @@ namespace sample_ecommerce_website.Models
         // Product images
         public virtual ICollection<Image> Images { get; set; }
 
-        public string DiscountID { get; set; }
+        public string DiscountId { get; set; }
     }
 }

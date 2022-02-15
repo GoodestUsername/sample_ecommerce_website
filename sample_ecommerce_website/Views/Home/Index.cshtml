@@ -1,8 +1,53 @@
-﻿@{
+﻿@using sample_ecommerce_website.Models;
+@model List<Product>
+
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="section banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 banner-text">
+                <h1>Lorem Ipsum</h1>
+                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="home-choice">
+    <div class="container">
+        <div class="row card-deck d-flex flex-row flex-nowrap no-gutter shadow overflow-auto">
+            @foreach (var product in Model)
+             {
+                <div class="card card-block mx-2 border-0 col-md-3">
+                    <a href="@Url.Action(product.Category, "Browse", new { type = product.Category })">
+                        <div class="active embed-responsive embed-responsive-1by1">
+                            <img class="card-img-top embed-responsive-item" src=@product.Images.ElementAt(0).ImageURL />
+                        </div>
+                    </a>
+
+                </div>
+             }
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm m-0 mt-2">
+                <img src="@Url.Content("~/Assets/Images/Eric.jpg")" class="img-fluid" />
+            </div>
+            <div class="col-sm m-0 mt-2 ml-auto">
+                <h2>Lorem Ipsum</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus placerat tortor, non facilisis dui auctor eget. Praesent id ultricies ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque a nibh imperdiet, finibus leo eget, molestie sem. Quisque lacinia quam quis sem pulvinar, quis faucibus neque aliquet. Donec magna mauris, tincidunt eu rhoncus in, accumsan at libero. Ut eget ornare orci. Integer eleifend leo in orci rutrum volutpat.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

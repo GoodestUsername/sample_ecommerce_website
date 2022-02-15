@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using sample_ecommerce_website.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,13 +15,13 @@ namespace sample_ecommerce_website.Models
     {
         // id of shopping cart
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string CartID { get; set; }
+        public virtual string CartId { get; set; }
 
         // total value of the cart
-        public double Total { get; set; }
+        public virtual double Total { get; set; }
 
         // Number of items in the cart
-        public int ItemQuantity { get; set; }
+        public virtual int ItemQuantity { get; set; }
 
         // foreign key from user
         [PersonalData]
@@ -29,7 +30,7 @@ namespace sample_ecommerce_website.Models
         [ForeignKey("Id")]
         public virtual User User { get; set; }
 
-        // items in the card
-        public virtual ICollection<Product> CartItems { get; set; }
+        // items in the cart
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sample_ecommerce_website.Models.DAL;
 
 namespace sample_ecommerce_website.Migrations
 {
     [DbContext(typeof(ProductDBModel))]
-    [Migration("20220108052559_ChangeImages")]
-    partial class ChangeImages
+    partial class ProductDBModelModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,121 +219,216 @@ namespace sample_ecommerce_website.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("sample_ecommerce_website.Models.DAL.CartItem", b =>
+                {
+                    b.Property<string>("CartItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CartId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartItemId")
+                        .HasName("CartItemId");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("sample_ecommerce_website.Models.Image", b =>
                 {
-                    b.Property<string>("ImageID")
+                    b.Property<string>("ImageId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductID")
+                    b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("ImageID");
+                    b.HasKey("ImageId");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Images");
 
                     b.HasData(
                         new
                         {
-                            ImageID = "1a70c6c0-95c3-46b7-a9a6-3abbc69ba1cf",
+                            ImageId = "1a70c6c0-95c3-46b7-a9a6-3abbc69ba1cf",
                             ImageURL = "https://ae01.alicdn.com/kf/HTB1ZZ8GKFXXXXb3aXXXq6xXFXXX0/Bayblades-Spinning-Top-METAL-FUSION-BB88-METEO-L-DRAGO-LW105LF-Launchers-L-R-Double.jpg",
-                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5"
+                            ProductId = "7bfd10ec-b1da-4aca-9271-6731715455a5"
                         },
                         new
                         {
-                            ImageID = "5fd6d1cc-6fe4-496f-8182-a264938eb7b6",
+                            ImageId = "5fd6d1cc-6fe4-496f-8182-a264938eb7b6",
                             ImageURL = "https://ae01.alicdn.com/kf/HTB1IcGmcxiH3KVjSZPfq6xBiVXaO/oMoToys-Beyblades-Big-Bang-Pegasis-BB105-Metal-4D-System-Cosmic-Pegasus-F-D-with-Launcher-Pack.jpg_Q90.jpg_.webp",
-                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453"
+                            ProductId = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453"
                         },
                         new
                         {
-                            ImageID = "f81d5219-7f71-40d0-b4b1-5fb86c810c1f",
+                            ImageId = "f81d5219-7f71-40d0-b4b1-5fb86c810c1f",
                             ImageURL = "http://images5.fanpop.com/image/photos/30900000/Random-4D-beyblades-beyblade-metal-fury-30966056-379-335.jpg",
-                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249"
+                            ProductId = "052cab8c-985e-4818-8fb8-ffb5d4a10249"
                         },
                         new
                         {
-                            ImageID = "ccba718f-eda0-4b15-95c4-3579cc655150",
+                            ImageId = "ccba718f-eda0-4b15-95c4-3579cc655150",
                             ImageURL = "https://m.media-amazon.com/images/I/51v6c-NAPHL._AC_.jpg",
-                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5"
+                            ProductId = "714e4da1-6b46-49df-87fb-7d20b55175a5"
                         },
                         new
                         {
-                            ImageID = "eeef3006-2ada-4811-97fc-e4ca42e336a8",
+                            ImageId = "eeef3006-2ada-4811-97fc-e4ca42e336a8",
                             ImageURL = "https://i5.walmartimages.com/asr/b2f830f2-c6df-4262-a764-ab65cccc2b2d.3e80a3fbe05918fe7e59e91b15e8ab2a.jpeg",
-                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c"
+                            ProductId = "d549e4fe-bb29-476d-a3ae-c7533c44773c"
                         },
                         new
                         {
-                            ImageID = "bf3be07b-d65e-4796-8aff-d2b9315fe9ec",
+                            ImageId = "bf3be07b-d65e-4796-8aff-d2b9315fe9ec",
                             ImageURL = "https://i.ebayimg.com/00/s/MTE3NlgxMTc2/z/ZBsAAOSwWWxY-cVZ/$_12.JPG",
-                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
+                            ProductId = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "951bc77e-9d11-4ffa-8452-e8185bcf6f08",
+                            ImageId = "951bc77e-9d11-4ffa-8452-e8185bcf6f08",
                             ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/386/1664/DiabloNemesisTakara1NWM__38445.1587767442.jpg?c=2",
-                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
+                            ProductId = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "2767d0eb-5ac0-4709-872c-107d6b05af76",
+                            ImageId = "2767d0eb-5ac0-4709-872c-107d6b05af76",
                             ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/414/827/s-l1600__21220.1535822191.jpg?c=2",
-                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5"
+                            ProductId = "66b879cf-637f-4f29-843d-03a60e35d9e5"
                         },
                         new
                         {
-                            ImageID = "f1311d0c-78f1-492c-9f90-a5f9d62c988e",
+                            ImageId = "f1311d0c-78f1-492c-9f90-a5f9d62c988e",
                             ImageURL = "https://images-na.ssl-images-amazon.com/images/I/71k4SkSUIIL._AC_SL1500_.jpg",
-                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69"
+                            ProductId = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69"
                         },
                         new
                         {
-                            ImageID = "194ac58f-c2a4-43b6-9d08-6a324a040350",
+                            ImageId = "194ac58f-c2a4-43b6-9d08-6a324a040350",
                             ImageURL = "https://i.ebayimg.com/images/g/jKQAAOSwc2dfbBIH/s-l640.jpg",
-                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358"
+                            ProductId = "463005ef-ba02-4ac4-b369-eaf5db49b358"
                         });
                 });
 
-            modelBuilder.Entity("sample_ecommerce_website.Models.Product", b =>
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderDetails", b =>
                 {
-                    b.Property<string>("ProductID")
+                    b.Property<string>("OrderDetailsId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
+                    b.Property<string>("BillingAddressAddressId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("OrderModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ShippingAddressAddressId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("OrderDetailsId")
+                        .HasName("OrderDetailsId");
 
-                    b.Property<string>("DiscountID")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("BillingAddressAddressId");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("Id");
+
+                    b.HasIndex("ShippingAddressAddressId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderItem", b =>
+                {
+                    b.Property<string>("OrderItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OrderDetailsId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderItemId")
+                        .HasName("OrderItemId");
+
+                    b.HasIndex("OrderDetailsId");
+
+                    b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.Product", b =>
+                {
+                    b.Property<string>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("DiscountId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float")
+                        .HasMaxLength(255);
+
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductID");
+                    b.HasKey("ProductId");
 
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
-                            ProductID = "7bfd10ec-b1da-4aca-9271-6731715455a5",
+                            ProductId = "7bfd10ec-b1da-4aca-9271-6731715455a5",
                             Category = "Metal Fusion Beyblade",
                             Description = "Meteo L-Drago LW105LF",
                             Name = "Meteo L-Drago LW105LF",
@@ -344,7 +437,7 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453",
+                            ProductId = "40cdbf5b-9e8d-4a8f-aa6b-b74700a02453",
                             Category = "Metal Fusion Beyblade",
                             Description = "Cosmic Pegasus F:D",
                             Name = "Cosmic Pegasus F:D",
@@ -353,7 +446,7 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "052cab8c-985e-4818-8fb8-ffb5d4a10249",
+                            ProductId = "052cab8c-985e-4818-8fb8-ffb5d4a10249",
                             Category = "Metal Fusion Beyblade",
                             Description = "Fang Leone",
                             Name = "Fang Leone 130W2D",
@@ -362,17 +455,17 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "714e4da1-6b46-49df-87fb-7d20b55175a5",
+                            ProductId = "714e4da1-6b46-49df-87fb-7d20b55175a5",
                             Category = "Metal Fusion Beyblade",
                             Description = "Blitz Striker 100RSF ",
-                            DiscountID = "wqeqwrewtewtw",
+                            DiscountId = "wqeqwrewtewtw",
                             Name = "Blitz Striker 100RSF",
                             Price = 69.989999999999995,
                             Stock = 0
                         },
                         new
                         {
-                            ProductID = "d549e4fe-bb29-476d-a3ae-c7533c44773c",
+                            ProductId = "d549e4fe-bb29-476d-a3ae-c7533c44773c",
                             Category = "Metal Fusion Beyblade",
                             Description = "Flame Libra T125ES ",
                             Name = "Flame Libra T125ES",
@@ -381,7 +474,7 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "66b879cf-637f-4f29-843d-03a60e35d9e5",
+                            ProductId = "66b879cf-637f-4f29-843d-03a60e35d9e5",
                             Category = "Metal Fusion Beyblade",
                             Description = "Diablo Nemesis X:D",
                             Name = "Diablo Nemesis X:D",
@@ -390,7 +483,7 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69",
+                            ProductId = "464aa345-82ef-4e6b-98b4-ea5e6db4ac69",
                             Category = "Metal Fusion Beyblade",
                             Description = "Gravity Destroyer AD145WD",
                             Name = "Gravity Destroyer AD145WD",
@@ -399,13 +492,164 @@ namespace sample_ecommerce_website.Migrations
                         },
                         new
                         {
-                            ProductID = "463005ef-ba02-4ac4-b369-eaf5db49b358",
+                            ProductId = "463005ef-ba02-4ac4-b369-eaf5db49b358",
                             Category = "Metal Fusion Beyblade",
                             Description = "Hades Kerbecs BD145DS",
                             Name = "Hades Kerbecs BD145DS",
                             Price = 69.989999999999995,
                             Stock = 100
                         });
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.ShoppingCart", b =>
+                {
+                    b.Property<string>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ItemQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("CartId")
+                        .HasName("CartId");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BillingAddressAddressId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("HomeAddressAddressId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNum")
+                        .HasColumnType("int")
+                        .HasMaxLength(24);
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShippingAddressAddressId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillingAddressAddressId");
+
+                    b.HasIndex("HomeAddressAddressId");
+
+                    b.HasIndex("ShippingAddressAddressId");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.UserAddress", b =>
+                {
+                    b.Property<string>("AddressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.HasKey("AddressId")
+                        .HasName("AddressId");
+
+                    b.ToTable("UserAddresses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -459,11 +703,70 @@ namespace sample_ecommerce_website.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("sample_ecommerce_website.Models.DAL.CartItem", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.ShoppingCart", "ShoppingCart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("sample_ecommerce_website.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+                });
+
             modelBuilder.Entity("sample_ecommerce_website.Models.Image", b =>
                 {
                     b.HasOne("sample_ecommerce_website.Models.Product", "Product")
                         .WithMany("Images")
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderDetails", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "BillingAddress")
+                        .WithMany()
+                        .HasForeignKey("BillingAddressAddressId");
+
+                    b.HasOne("sample_ecommerce_website.Models.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressId");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.OrderItem", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.OrderDetails", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderDetailsId");
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.ShoppingCart", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.User", "User")
+                        .WithOne("ShoppingCart")
+                        .HasForeignKey("sample_ecommerce_website.Models.ShoppingCart", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("sample_ecommerce_website.Models.User", b =>
+                {
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "BillingAddress")
+                        .WithMany()
+                        .HasForeignKey("BillingAddressAddressId");
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "HomeAddress")
+                        .WithMany()
+                        .HasForeignKey("HomeAddressAddressId");
+
+                    b.HasOne("sample_ecommerce_website.Models.UserAddress", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressId");
                 });
 #pragma warning restore 612, 618
         }

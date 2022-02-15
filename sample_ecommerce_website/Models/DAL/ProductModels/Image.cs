@@ -14,18 +14,17 @@ namespace sample_ecommerce_website.Models
     public class Image
     {
         // Image ID
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ImageID { get; set; }
+        public virtual string ImageId { get; set; }
 
         // Image url as string
         [Required(ErrorMessage = "At least one image url is required")]
-        public string ImageURL { get; set; }
+        public virtual string ImageURL { get; set; }
 
         // Foreign key
-        public virtual string ProductID { get; set; }
+        public virtual string ProductId { get; set; }
 
-        [ForeignKey("ProductID")]
+        [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
     }
 }
