@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
 using System;
@@ -11,35 +11,36 @@ using System.Threading.Tasks;
 
 namespace sample_ecommerce_website.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
-        // private readonly ILogger<HomeController> _logger;
-        /*        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }*/
         private ProductDBModel MyContext { get; set; }
 
-        public HomeController(ProductDBModel context)
+        public ProductController(ProductDBModel context)
         {
             MyContext = context;
         }
+
+        // GET: NavigationController
         public IActionResult Index()
         {
-            var r = new Random();
-            var HomePageDisplayProducts = MyContext.Products.Take(4);
-            HomePageDisplayProducts.Include(product => product.Images).ToList();
-
-            return View(HomePageDisplayProducts.ToList());
+            return View();
         }
 
-        public IActionResult GalleryView()
+        [HttpGet]
+        // GET: get product
+        public async Task<IActionResult> ProductView(string itemId, Image[] images)
         {
-            MyContext.Products.Include(product => product.Images).ToList();
-            var products = from p in MyContext.Products select p;
+            var item = await MyContext.Products.FirstOrDefaultAsync(product => product.ProductId == itemId);
+            
+            if (item == null)
+            {
+                return RedirectToAction(actionName:"Index", controllerName:"Home");
+            }
 
-            return View("GalleryView", products.ToList());
+            item.Images = images;
+            return View(item);
         }
+
 
         public IActionResult Privacy()
         {

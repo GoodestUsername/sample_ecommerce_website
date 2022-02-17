@@ -24,7 +24,7 @@
             @foreach (var product in Model)
              {
                 <div class="card card-block mx-2 border-0 col-md-3">
-                    <a href="@Url.Action(product.Category, "Browse", new { type = product.Category })">
+                    <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = product.ProductId, images = product.Images })>
                         <div class="active embed-responsive embed-responsive-1by1">
                             <img class="card-img-top embed-responsive-item" src=@product.Images.ElementAt(0).ImageURL />
                         </div>
