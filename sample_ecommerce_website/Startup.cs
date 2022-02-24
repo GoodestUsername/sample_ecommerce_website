@@ -30,20 +30,34 @@ namespace sample_ecommerce_website
         {
             services.AddControllersWithViews();
             services.AddDbContext<ProductDBModel>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")));
-            /*            services.AddIdentity<User, IdentityRole>(options =>
+
+            /*            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                         {
                             options.Password.RequiredLength = 8;
                             options.Password.RequireNonAlphanumeric = true;
                             options.Password.RequireDigit = true;
                         }).AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();*/
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ProductDBModel>()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();
+             /*            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                         {
+                             options.Password.RequiredLength = 8;
+                             options.Password.RequireNonAlphanumeric = true;
+                             options.Password.RequireDigit = true;
+                         }).AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();*/
 
+             /*            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBModel>();*/
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBModel>();
-            services.AddAuthentication("CookieAuthentication")
+             services.AddAuthentication("CookieAuthentication")
                 .AddCookie("CookieAuthentication", config => {
                 config.Cookie.Name = "Access.Cookie";
                 config.LoginPath = "/Home/Authenticate";
             });
+            
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

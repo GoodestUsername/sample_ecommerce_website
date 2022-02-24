@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 /// <summary>
-/// User class
+/// ApplicationUser class
 /// </summary>
 namespace sample_ecommerce_website.Models
 {
-    public class User: IdentityUser<Guid>
+    public class ApplicationUser: IdentityUser
     {
         [PersonalData]
         [StringLength(200)]
@@ -61,9 +61,6 @@ namespace sample_ecommerce_website.Models
         // Users past orders
         public virtual ICollection<OrderDetails> Orders { get; set; }
 
-        public User()
-        {
-            Id = Guid.NewGuid();
-        }
+        public ApplicationUser() => Id = Guid.NewGuid().ToString();
     }
 }

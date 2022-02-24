@@ -19,10 +19,10 @@ namespace sample_ecommerce_website.Models
 
         // foreign key from user
         [PersonalData]
-        public virtual Guid Id { get; set; }
+        public virtual string Id { get; set; }
 
         [ForeignKey("Id")]
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public virtual UserAddress BillingAddress { get; set; }
 

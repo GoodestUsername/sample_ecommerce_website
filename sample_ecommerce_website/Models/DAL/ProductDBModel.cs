@@ -8,7 +8,7 @@ namespace sample_ecommerce_website.Models.DAL
     /// <summary>
     /// DB context class
     /// </summary>
-    public class ProductDBModel : IdentityDbContext
+    public class ProductDBModel : IdentityDbContext<ApplicationUser>
     {
         public ProductDBModel(DbContextOptions<ProductDBModel> options) : base(options)
         { }

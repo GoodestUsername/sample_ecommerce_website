@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sample_ecommerce_website.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,31 +19,6 @@ namespace sample_ecommerce_website.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,6 +77,75 @@ namespace sample_ecommerce_website.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageId = table.Column<string>(nullable: false),
+                    ImageURL = table.Column<string>(nullable: false),
+                    ProductId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageId);
+                    table.ForeignKey(
+                        name: "FK_Images_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 200, nullable: false),
+                    LastName = table.Column<string>(maxLength: 200, nullable: false),
+                    Email = table.Column<string>(maxLength: 256, nullable: false),
+                    PhoneNum = table.Column<int>(maxLength: 24, nullable: false),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    HomeAddressAddressId = table.Column<string>(nullable: true),
+                    ShippingAddressAddressId = table.Column<string>(nullable: true),
+                    BillingAddressAddressId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_UserAddresses_BillingAddressAddressId",
+                        column: x => x.BillingAddressAddressId,
+                        principalTable: "UserAddresses",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_UserAddresses_HomeAddressAddressId",
+                        column: x => x.HomeAddressAddressId,
+                        principalTable: "UserAddresses",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_UserAddresses_ShippingAddressAddressId",
+                        column: x => x.ShippingAddressAddressId,
+                        principalTable: "UserAddresses",
+                        principalColumn: "AddressId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -126,8 +170,8 @@ namespace sample_ecommerce_website.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -171,8 +215,8 @@ namespace sample_ecommerce_website.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -187,90 +231,21 @@ namespace sample_ecommerce_website.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ImageId = table.Column<string>(nullable: false),
-                    ImageURL = table.Column<string>(nullable: false),
-                    ProductId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ImageId);
-                    table.ForeignKey(
-                        name: "FK_Images_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    UserName = table.Column<string>(nullable: true),
-                    NormalizedUserName = table.Column<string>(nullable: true),
-                    NormalizedEmail = table.Column<string>(nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(maxLength: 200, nullable: false),
-                    LastName = table.Column<string>(maxLength: 200, nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    PhoneNum = table.Column<int>(maxLength: 24, nullable: false),
-                    CreationDate = table.Column<DateTime>(nullable: false),
-                    HomeAddressAddressId = table.Column<string>(nullable: true),
-                    ShippingAddressAddressId = table.Column<string>(nullable: true),
-                    BillingAddressAddressId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_UserAddresses_BillingAddressAddressId",
-                        column: x => x.BillingAddressAddressId,
-                        principalTable: "UserAddresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_User_UserAddresses_HomeAddressAddressId",
-                        column: x => x.HomeAddressAddressId,
-                        principalTable: "UserAddresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_User_UserAddresses_ShippingAddressAddressId",
-                        column: x => x.ShippingAddressAddressId,
-                        principalTable: "UserAddresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Carts",
                 columns: table => new
                 {
                     CartId = table.Column<string>(nullable: false),
                     Total = table.Column<double>(nullable: false),
                     ItemQuantity = table.Column<int>(nullable: false),
-                    Id = table.Column<Guid>(nullable: false)
+                    Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("CartId", x => x.CartId);
                     table.ForeignKey(
-                        name: "FK_Carts_User_Id",
+                        name: "FK_Carts_AspNetUsers_Id",
                         column: x => x.Id,
-                        principalTable: "User",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -281,7 +256,7 @@ namespace sample_ecommerce_website.Migrations
                 {
                     OrderDetailsId = table.Column<string>(nullable: false),
                     Cost = table.Column<int>(nullable: false),
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     BillingAddressAddressId = table.Column<string>(nullable: true),
                     ShippingAddressAddressId = table.Column<string>(nullable: true),
                     Status = table.Column<string>(nullable: true),
@@ -297,9 +272,9 @@ namespace sample_ecommerce_website.Migrations
                         principalColumn: "AddressId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_User_Id",
+                        name: "FK_Orders_AspNetUsers_Id",
                         column: x => x.Id,
-                        principalTable: "User",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -418,6 +393,16 @@ namespace sample_ecommerce_website.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_BillingAddressAddressId",
+                table: "AspNetUsers",
+                column: "BillingAddressAddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_HomeAddressAddressId",
+                table: "AspNetUsers",
+                column: "HomeAddressAddressId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -428,6 +413,11 @@ namespace sample_ecommerce_website.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_ShippingAddressAddressId",
+                table: "AspNetUsers",
+                column: "ShippingAddressAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_CartId",
@@ -469,21 +459,6 @@ namespace sample_ecommerce_website.Migrations
                 name: "IX_Orders_ShippingAddressAddressId",
                 table: "Orders",
                 column: "ShippingAddressAddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_BillingAddressAddressId",
-                table: "User",
-                column: "BillingAddressAddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_HomeAddressAddressId",
-                table: "User",
-                column: "HomeAddressAddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_ShippingAddressAddressId",
-                table: "User",
-                column: "ShippingAddressAddressId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -516,9 +491,6 @@ namespace sample_ecommerce_website.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Carts");
 
             migrationBuilder.DropTable(
@@ -528,7 +500,7 @@ namespace sample_ecommerce_website.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "UserAddresses");

@@ -28,16 +28,15 @@ namespace sample_ecommerce_website.Controllers
 
         [HttpGet]
         // GET: get product
-        public async Task<IActionResult> ProductView(string itemId, Image[] images)
+        public async Task<IActionResult> ProductView(string itemId)
         {
-            var item = await MyContext.Products.FirstOrDefaultAsync(product => product.ProductId == itemId);
+            var item = await MyContext.Products.Include(product => product.Images).FirstOrDefaultAsync(product => product.ProductId == itemId);
             
             if (item == null)
             {
                 return RedirectToAction(actionName:"Index", controllerName:"Home");
             }
 
-            item.Images = images;
             return View(item);
         }
 
