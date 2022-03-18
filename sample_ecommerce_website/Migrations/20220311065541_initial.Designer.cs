@@ -10,7 +10,7 @@ using sample_ecommerce_website.Models.DAL;
 namespace sample_ecommerce_website.Migrations
 {
     [DbContext(typeof(ProductDBModel))]
-    [Migration("20220221081323_initial")]
+    [Migration("20220311065541_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -566,12 +566,12 @@ namespace sample_ecommerce_website.Migrations
 
                     b.Property<string>("AddressLine1")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("AddressLine2")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -582,6 +582,11 @@ namespace sample_ecommerce_website.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("PostalCode")
                         .IsRequired()

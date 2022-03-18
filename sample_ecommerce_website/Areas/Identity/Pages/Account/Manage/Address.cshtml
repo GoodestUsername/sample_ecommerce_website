@@ -1,0 +1,118 @@
+﻿@page
+@model AddressModel
+@using sample_ecommerce_website.Models;
+
+@{
+    ViewData["Title"] = "Addresses";
+    ViewData["ActivePage"] = ManageNavPages.Address;
+    char[] MockModel = { 'a', 'b', 'c'};
+}
+
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <div class="card-deck">
+            @if (AddressModel.HomeAddress != null)
+            {
+                <form id="change-update-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            @AddressModel.HomeAddress.Name
+                            <br />
+                            @AddressModel.HomeAddress.AddressLine1
+                            <br />
+                            @if (AddressModel.HomeAddress.AddressLine2 != null)
+                            {
+                                @AddressModel.HomeAddress.AddressLine2
+                                <br />
+                            }
+                            @AddressModel.HomeAddress.City, @AddressModel.HomeAddress.Province @AddressModel.HomeAddress.PostalCode
+                            <br />
+                            @AddressModel.HomeAddress.Country
+                        </div>
+                    </div>
+                </form>
+            }
+
+            else
+            {
+                <form id="add-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            <button type="submit" value=@AddressTypes.HomeAddress class="btn btn-primary">Add Home Address</button>
+                        </div>
+                    </div>
+                </form>
+            }
+
+            @if (AddressModel.BillingAddress != null)
+            {
+                <form id="change-update-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            @AddressModel.BillingAddress.Name
+                            <br />
+                            @AddressModel.BillingAddress.AddressLine1
+                            <br />
+                            @if (AddressModel.BillingAddress.AddressLine2 != null)
+                            {
+                                @AddressModel.BillingAddress.AddressLine2
+                                <br />
+                            }
+                            @AddressModel.BillingAddress.City, @AddressModel.BillingAddress.Province @AddressModel.BillingAddress.PostalCode
+                            <br />
+                            @AddressModel.BillingAddress.Country
+                        </div>
+                    </div>
+                </form>
+            }
+
+            else
+            {
+                <form id="add-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            <button type="submit" value=@AddressTypes.BillingAddress class="btn btn-primary">Add Billing Address</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            @if (AddressModel.ShippingAddress != null)
+            {
+                <form id="change-update-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            @AddressModel.ShippingAddress.Name
+                            <br />
+                            @AddressModel.ShippingAddress.AddressLine1
+                            <br />
+                            @if (AddressModel.ShippingAddress.AddressLine2 != null)
+                            {
+                                @AddressModel.ShippingAddress.AddressLine2
+                                <br />
+                            }
+                            @AddressModel.ShippingAddress.City, @AddressModel.ShippingAddress.Province @AddressModel.ShippingAddress.PostalCode
+                            <br />
+                            @AddressModel.ShippingAddress.Country
+                        </div>
+                    </div>
+                </form>
+            }
+
+            else
+            {
+                <form id="add-address-form" method="post">
+                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                        <div class="card-body-text-only">
+                            <button type="submit" value=@AddressTypes.ShippingAddress class="btn btn-primary">Add Shipping Address</button>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace sample_ecommerce_website.Controllers
 {
@@ -28,14 +25,14 @@ namespace sample_ecommerce_website.Controllers
         {
             var r = new Random();
             var HomePageDisplayProducts = MyContext.Products.Take(4);
-            HomePageDisplayProducts.Include(product => product.Images).ToList();
+            HomePageDisplayProducts.Include(product => product.Images);
 
             return View(HomePageDisplayProducts.ToList());
         }
 
         public IActionResult GalleryView()
         {
-            MyContext.Products.Include(product => product.Images).ToList();
+            MyContext.Products.Include(product => product.Images);
             var products = from p in MyContext.Products select p;
 
             return View("GalleryView", products.ToList());

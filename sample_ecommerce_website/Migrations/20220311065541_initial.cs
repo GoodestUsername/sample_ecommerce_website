@@ -43,8 +43,9 @@ namespace sample_ecommerce_website.Migrations
                 columns: table => new
                 {
                     AddressId = table.Column<string>(nullable: false),
-                    AddressLine1 = table.Column<string>(maxLength: 100, nullable: false),
-                    AddressLine2 = table.Column<string>(maxLength: 100, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    AddressLine1 = table.Column<string>(maxLength: 200, nullable: false),
+                    AddressLine2 = table.Column<string>(maxLength: 200, nullable: true),
                     City = table.Column<string>(maxLength: 100, nullable: false),
                     Province = table.Column<string>(maxLength: 60, nullable: false),
                     PostalCode = table.Column<string>(maxLength: 10, nullable: false),

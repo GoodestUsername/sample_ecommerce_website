@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +28,7 @@ namespace sample_ecommerce_website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ProductDBModel>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")));
+            services.AddDbContext<ProductDBModel>(options => options.UseSqlServer(Configuration.GetConnectionString("ProductDBContext")).UseLazyLoadingProxies());
 
             /*            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
                         {
@@ -41,16 +40,16 @@ namespace sample_ecommerce_website
                 .AddEntityFrameworkStores<ProductDBModel>()
                 .AddDefaultUI()
                 .AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();
-             /*            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-                         {
-                             options.Password.RequiredLength = 8;
-                             options.Password.RequireNonAlphanumeric = true;
-                             options.Password.RequireDigit = true;
-                         }).AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();*/
+            /*            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                        {
+                            options.Password.RequiredLength = 8;
+                            options.Password.RequireNonAlphanumeric = true;
+                            options.Password.RequireDigit = true;
+                        }).AddEntityFrameworkStores<ProductDBModel>().AddDefaultTokenProviders();*/
 
-             /*            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBModel>();*/
-
-             services.AddAuthentication("CookieAuthentication")
+/*            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProductDBModel>();
+*/
+            services.AddAuthentication("CookieAuthentication")
                 .AddCookie("CookieAuthentication", config => {
                 config.Cookie.Name = "Access.Cookie";
                 config.LoginPath = "/Home/Authenticate";

@@ -33,6 +33,15 @@ namespace sample_ecommerce_website.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Display(Name = "Username")]
+            public string UserName { get; set; }
+
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -40,14 +49,18 @@ namespace sample_ecommerce_website.Areas.Identity.Pages.Account.Manage
 
         private async Task LoadAsync(ApplicationUser user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
-            Username = userName;
+            var UserName = await _userManager.GetUserNameAsync(user);
+            var PhoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var FirstName = user.FirstName;
+            var LastName = user.LastName;
+            Username = UserName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                UserName = UserName,
+                FirstName = FirstName,
+                LastName = LastName,
+                PhoneNumber = PhoneNumber
             };
         }
 
@@ -66,6 +79,21 @@ namespace sample_ecommerce_website.Areas.Identity.Pages.Account.Manage
         public async Task<IActionResult> OnPostAsync()
         {
             var user = await _userManager.GetUserAsync(User);
+            var FirstName = user.FirstName;
+            var LastName = user.LastName;
+
+            if (Input.FirstName != FirstName)
+            {
+                user.FirstName = Input.FirstName;
+                await _userManager.UpdateAsync(user);
+            }
+
+            if (Input.LastName != LastName)
+            {
+                user.LastName = Input.LastName;
+                await _userManager.UpdateAsync(user);
+            }
+
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");

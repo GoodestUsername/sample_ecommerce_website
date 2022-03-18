@@ -1,0 +1,66 @@
+﻿@page
+@model AddAddressModel
+@{
+    ViewData["Title"] = "Address edit";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Add an address</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for=Input.Name></label>
+                <input asp-for=Input.Name class="form-control" />
+                <span asp-validation-for=Input.Name class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Input.AddressLine1></label>
+                <input asp-for=Input.AddressLine1 class="form-control" />
+                <span asp-validation-for=Input.AddressLine1 class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Input.AddressLine2></label>
+                <input asp-for=Input.AddressLine2 class="form-control" />
+                <span asp-validation-for=Input.AddressLine2 class=" text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for=Input.Country></label>
+                <input asp-for=Input.Country class="form-control" />
+                <span asp-validation-for=Input.Country class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Input.Province></label>
+                <input asp-for=Input.Province class="form-control" />
+                <span asp-validation-for=Input.Province class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Input.City></label>
+                <input asp-for=Input.City class="form-control" />
+                <span asp-validation-for=Input.City class=" text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Input.PostalCode></label>
+                <input asp-for=Input.PostalCode class="form-control" />
+                <span asp-validation-for=Input.PostalCode class=" text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Address</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

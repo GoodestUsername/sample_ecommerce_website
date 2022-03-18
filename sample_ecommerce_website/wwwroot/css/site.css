@@ -71,6 +71,12 @@ button.accept-policy {
         margin-bottom: 30px!important;
     }
 
+    .card-with-borders {
+        margin-bottom: 30px !important;
+        height: 15rem;
+        width: 20rem;
+    }
+
     .card-deck {
         /* makes card deck responsive
          source: https://stackoverflow.com/questions/38895106/how-to-limit-number-of-columns-of-card-deck
@@ -89,6 +95,12 @@ button.accept-policy {
     .card-body {
         margin-top: 20px !important;
         padding: 0rem !important;
+    }
+
+    .card-body-text-only {
+        margin-top: 10px !important;
+        margin-left: 10px !important;
+        padding: 0rem 2rem 2rem 0rem;
     }
 /* #endregion card styles */
 

@@ -11,6 +11,12 @@ using System.Threading.Tasks;
 /// </summary>
 namespace sample_ecommerce_website.Models
 {
+    public enum AddressTypes
+    {
+        HomeAddress,
+        BillingAddress,
+        ShippingAddress
+    }
     public class UserAddress
     {
         // Address Details ID
@@ -18,13 +24,19 @@ namespace sample_ecommerce_website.Models
         public virtual string AddressId { get; set; }
 
         [PersonalData]
-        [StringLength(100)]
+        [StringLength(200)]
+        [Display(Name = "Name of recipiant")]
+        [Required(ErrorMessage = "Name of recipiant is required")]
+        public virtual string Name { get; set; }
+
+        [PersonalData]
+        [StringLength(200)]
         [Display(Name = "Address")]
         [Required(ErrorMessage = "Street Address is required")]
         public virtual string AddressLine1 { get; set; }
 
         [PersonalData]
-        [StringLength(100)]
+        [StringLength(200)]
         [Display(Name = "Address 2")]
         public virtual string AddressLine2 { get; set; }
 

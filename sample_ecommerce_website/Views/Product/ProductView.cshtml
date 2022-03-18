@@ -6,6 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 <section class="main-banner">
     <div class="container">
         <div class="row">
@@ -21,7 +22,7 @@
         <div class="row">
             <div class="col-md-7">
 
-                    <h4>@Model.Name</h4>
+                <h4>@Model.Name</h4>
 
 
 
@@ -55,19 +56,15 @@
                 </dl>
             </div>
             <div class="col-md-4 col-md-offset-1">
-                <img src="@Html.DisplayFor(model => model.Images.ElementAt(0).ImageURL)" class="img-responsive">
+                <img src="@Html.DisplayFor(model => model.Images.ElementAt(0).ImageURL)" class="img-fluid">
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p>
-                add to shopping cart
-@*                    <a href="@Url.Action("AddToCart","ShoppingCart", new { id= Model.FoodItemID },null)" class="btn btn-default" title="Details"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-*@                </p>
-                <p>
-                back to list
-@*                    @Html.ActionLink("Back to List", "Browse", new { type = Model.FoodType })
-*@                </p>
+@*                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = product.ProductId })><h5 class="card-title">@product.Name</h5></a>
+*@
+                <a href=@Url.Action(action:"AddToCart", controller:"ShoppingCart", values:new { itemId= Model.ProductId }) class="btn btn-default" title="Details"> <i class="fas fa-shopping-cart"></i>Add to Cart</a>
+                @*                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>*@
             </div>
         </div>
 

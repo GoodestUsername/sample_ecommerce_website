@@ -23,6 +23,7 @@ namespace sample_ecommerce_website.Models
         // Number of items in the cart
         public virtual int ItemQuantity { get; set; }
 
+        // delete later
         // foreign key from user
         [PersonalData]
         public virtual string Id { get; set; }

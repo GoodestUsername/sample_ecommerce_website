@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Cart item class
 /// </summary>
-namespace sample_ecommerce_website.Models.DAL
+namespace sample_ecommerce_website.Models
 {
     public class CartItem
     {
