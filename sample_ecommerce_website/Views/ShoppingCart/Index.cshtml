@@ -75,26 +75,23 @@
             else
             {
                 <tbody>
-                    @foreach (var cartItem in Model)
+                   @foreach (var cartItem in Model)
                     {
-                        <tr>
-                            <td>
-                                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = cartItem.ProductId })><h5 class="card-title">@cartItem.Product.Name</h5></a>
-                            </td>
-                            <td>@cartItem.Product.Price</td>
-                            <td>
-                                @Html.DropDownListFor()
-                                <input type="submit" value="submit" onchange="" >@cartItem.Quantity<input />
-                            </td>
-                            <td>
-                                <a asp-controller="ShoppingCart" asp-action="Edit" asp-route-id="@cartItem.CartItemId">Remove one</a>
-                                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartItem.CartItemId">Delete</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = cartItem.ProductId })><h5 class="card-title">@cartItem.Product.Name</h5></a>
+                        </td>
+                        <td>@cartItem.Product.Price</td>
+                        <td>@cartItem.Quantity</td>
+                        <td>
+                            <a asp-controller="ShoppingCart" asp-action="RemoveOneFromCart" asp-route-id="@cartItem.CartItemId">Remove one</a>
+                            <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@cartItem.CartItemId">Add one</a>
+                            <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartItem.CartItemId">Delete</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             }
-
         </table>
     </div>
 </div>
