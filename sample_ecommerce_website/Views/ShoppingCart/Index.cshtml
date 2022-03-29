@@ -1,64 +1,12 @@
-﻿@*@model IEnumerable<sample_ecommerce_website.Models.ShoppingCart>
+﻿@model ShoppingCart
 
-    @{
-        ViewData["Title"] = "Index";
-    }
-
-    <h1>Index</h1>
-
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Total)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ItemQuantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ItemQuantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Id)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CartId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.CartId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CartId">Delete</a>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>
-*@
-
-@*
-
-*@
-@model List<CartItem>
-@{
-}
 
 <h4>@ViewData["Title"]</h4>
 <div class="row">
     <div class="col-md-6">
         <h1>Cart</h1>
-
+        <h1> You have @Model.ItemQuantity items in cart</h1>
+        <h1>Cart total @Model.Total</h1>
         <table class="table table-bordered table-striped">
 
             <thead>
@@ -70,25 +18,25 @@
             </thead>
             @if (Model == null)
             {
-               
+
             }
             else
             {
                 <tbody>
-                   @foreach (var cartItem in Model)
+                    @foreach (var cartItem in Model.CartItems)
                     {
-                    <tr>
-                        <td>
-                            <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = cartItem.ProductId })><h5 class="card-title">@cartItem.Product.Name</h5></a>
-                        </td>
-                        <td>@cartItem.Product.Price</td>
-                        <td>@cartItem.Quantity</td>
-                        <td>
-                            <a asp-controller="ShoppingCart" asp-action="RemoveOneFromCart" asp-route-id="@cartItem.CartItemId">Remove one</a>
-                            <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@cartItem.CartItemId">Add one</a>
-                            <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartItem.CartItemId">Delete</a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = cartItem.ProductId })><h5 class="card-title">@cartItem.Product.Name</h5></a>
+                            </td>
+                            <td>@cartItem.Product.Price</td>
+                            <td>@cartItem.Quantity</td>
+                            <td>
+                                <a asp-controller="ShoppingCart" asp-action="RemoveOneFromCart" asp-route-id="@cartItem.CartItemId">Remove one</a>
+                                <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@cartItem.CartItemId">Add one</a>
+                                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartItem.CartItemId">Delete</a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             }
