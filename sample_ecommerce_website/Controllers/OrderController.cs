@@ -2,159 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
 
 namespace sample_ecommerce_website.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly ProductDBModel _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrderController(ProductDBModel context)
+        public class AddressViewModel
         {
+            public UserAddress HomeAddress { get; set; }
+
+            public UserAddress BillingAddress { get; set; }
+
+            public UserAddress ShippingAddress { get; set; }
+        }
+
+        public OrderController(UserManager<ApplicationUser> userManager,
+            ProductDBModel context)
+        {
+            _userManager = userManager;
+
             _context = context;
         }
 
-        // GET: Order
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Checkout()
         {
-            var productDBModel = _context.Orders.Include(o => o.User);
-            return View(await productDBModel.ToListAsync());
-        }
-
-        // GET: Order/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                return NotFound();
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var orderDetails = await _context.Orders
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.OrderDetailsId == id);
-            if (orderDetails == null)
-            {
-                return NotFound();
-            }
-
-            return View(orderDetails);
+            return View(user.ShoppingCart);
         }
 
-        // GET: Order/Create
-        public IActionResult Create()
+        public async Task<IActionResult> GoToAddressConfirmation()
         {
-            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id");
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            AddressViewModel ViewModel = new AddressViewModel
+            {
+                HomeAddress = user.HomeAddress,
+                BillingAddress = user.BillingAddress,
+                ShippingAddress = user.ShippingAddress
+            };
+         
+            return View("AddressConfirmation", ViewModel);
+        }
+
+        public async Task<IActionResult> CreateOrder()
+        {
+            
             return View();
-        }
-
-        // POST: Order/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderDetailsId,Cost,Id,Status,OrderModificationDate")] OrderDetails orderDetails)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(orderDetails);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", orderDetails.Id);
-            return View(orderDetails);
-        }
-
-        // GET: Order/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orderDetails = await _context.Orders.FindAsync(id);
-            if (orderDetails == null)
-            {
-                return NotFound();
-            }
-            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", orderDetails.Id);
-            return View(orderDetails);
-        }
-
-        // POST: Order/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("OrderDetailsId,Cost,Id,Status,OrderModificationDate")] OrderDetails orderDetails)
-        {
-            if (id != orderDetails.OrderDetailsId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(orderDetails);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderDetailsExists(orderDetails.OrderDetailsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", orderDetails.Id);
-            return View(orderDetails);
-        }
-
-        // GET: Order/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orderDetails = await _context.Orders
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.OrderDetailsId == id);
-            if (orderDetails == null)
-            {
-                return NotFound();
-            }
-
-            return View(orderDetails);
-        }
-
-        // POST: Order/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var orderDetails = await _context.Orders.FindAsync(id);
-            _context.Orders.Remove(orderDetails);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool OrderDetailsExists(string id)
-        {
-            return _context.Orders.Any(e => e.OrderDetailsId == id);
         }
     }
 }

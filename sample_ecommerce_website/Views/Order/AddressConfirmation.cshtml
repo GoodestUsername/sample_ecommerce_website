@@ -1,34 +1,32 @@
-﻿@page
-@model AddressModel
-@using sample_ecommerce_website.Models;
+﻿@using sample_ecommerce_website.Controllers;
+
+@model OrderController.AddressViewModel
 
 @{
-    ViewData["Title"] = "Addresses";
-    ViewData["ActivePage"] = ManageNavPages.Address;
+    ViewData["Title"] = "Addresses Confirmation";
 }
 
 <h4>@ViewData["Title"]</h4>
-<partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
         <div class="card-deck">
-            @if (AddressModel.HomeAddress != null)
+            @if (Model.HomeAddress != null)
             {
                 <form id="change-update-address-form" method="post">
                     <div class="card-with-borders card-block mx-2 border border-dark rounded">
                         <div class="card-body-text-only">
-                            @AddressModel.HomeAddress.Name
+                            @Model.HomeAddress.Name
                             <br />
-                            @AddressModel.HomeAddress.AddressLine1
+                            @Model.HomeAddress.AddressLine1
                             <br />
-                            @if (AddressModel.HomeAddress.AddressLine2 != null)
+                            @if (Model.HomeAddress.AddressLine2 != null)
                             {
-                                @AddressModel.HomeAddress.AddressLine2
+                                @Model.HomeAddress.AddressLine2
                                 <br />
                             }
-                            @AddressModel.HomeAddress.City, @AddressModel.HomeAddress.Province @AddressModel.HomeAddress.PostalCode
+                            @Model.HomeAddress.City, @Model.HomeAddress.Province @Model.HomeAddress.PostalCode
                             <br />
-                            @AddressModel.HomeAddress.Country
+                            @Model.HomeAddress.Country
                         </div>
                     </div>
                 </form>
@@ -45,23 +43,23 @@
                 </form>
             }
 
-            @if (AddressModel.BillingAddress != null)
+            @if (Model.BillingAddress != null)
             {
                 <form id="change-update-address-form" method="post">
                     <div class="card-with-borders card-block mx-2 border border-dark rounded">
                         <div class="card-body-text-only">
-                            @AddressModel.BillingAddress.Name
+                            @Model.BillingAddress.Name
                             <br />
-                            @AddressModel.BillingAddress.AddressLine1
+                            @Model.BillingAddress.AddressLine1
                             <br />
-                            @if (AddressModel.BillingAddress.AddressLine2 != null)
+                            @if (Model.BillingAddress.AddressLine2 != null)
                             {
-                                @AddressModel.BillingAddress.AddressLine2
+                                @sModel.BillingAddress.AddressLine2
                                 <br />
                             }
-                            @AddressModel.BillingAddress.City, @AddressModel.BillingAddress.Province @AddressModel.BillingAddress.PostalCode
+                            @Model.BillingAddress.City, @Model.BillingAddress.Province @Model.BillingAddress.PostalCode
                             <br />
-                            @AddressModel.BillingAddress.Country
+                            @Model.BillingAddress.Country
                         </div>
                     </div>
                 </form>
@@ -77,23 +75,23 @@
                     </div>
                 </form>
             }
-            @if (AddressModel.ShippingAddress != null)
+            @if (Model.ShippingAddress != null)
             {
                 <form id="change-update-address-form" method="post">
                     <div class="card-with-borders card-block mx-2 border border-dark rounded">
                         <div class="card-body-text-only">
-                            @AddressModel.ShippingAddress.Name
+                            @Model.ShippingAddress.Name
                             <br />
-                            @AddressModel.ShippingAddress.AddressLine1
+                            @Model.ShippingAddress.AddressLine1
                             <br />
-                            @if (AddressModel.ShippingAddress.AddressLine2 != null)
+                            @if (Model.ShippingAddress.AddressLine2 != null)
                             {
-                                @AddressModel.ShippingAddress.AddressLine2
+                                @Model.ShippingAddress.AddressLine2
                                 <br />
                             }
-                            @AddressModel.ShippingAddress.City, @AddressModel.ShippingAddress.Province @AddressModel.ShippingAddress.PostalCode
+                            @Model.ShippingAddress.City, @Model.ShippingAddress.Province @Model.ShippingAddress.PostalCode
                             <br />
-                            @AddressModel.ShippingAddress.Country
+                            @Model.ShippingAddress.Country
                         </div>
                     </div>
                 </form>
@@ -112,6 +110,3 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

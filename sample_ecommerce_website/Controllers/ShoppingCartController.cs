@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
 
@@ -35,10 +33,10 @@ namespace sample_ecommerce_website.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            return View(user.ShoppingCart.CartItems.ToList());
+            return View(user.ShoppingCart);
         }
 
-        public async Task<IActionResult> AddToCart(string itemId)
+        public async Task<IActionResult> AddToCart(string ProductId)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -47,13 +45,13 @@ namespace sample_ecommerce_website.Controllers
             }
             List<CartItem> cart = user.ShoppingCart.CartItems.ToList();
 
-            int index = cart.FindIndex(item => item.ProductId == itemId);
-           
+            int index = cart.FindIndex(item => item.ProductId == ProductId);
+            user.ShoppingCart.Total += _context.Products.Find(ProductId).Price;
             if (index == -1)
             {
                 CartItem newCartItem = new()
                 {
-                    ProductId = itemId,
+                    ProductId = ProductId,
                     Quantity = 1,
                     DateCreated = DateTime.Now
                 };
@@ -66,10 +64,10 @@ namespace sample_ecommerce_website.Controllers
 
             user.ShoppingCart.CartItems = cart;
             user.ShoppingCart.ItemQuantity += 1;
-            user.ShoppingCart.Total += _context.Products.Find(itemId).Price;
+
             await _userManager.UpdateAsync(user);
 
-            return View("Index", user.ShoppingCart.CartItems.ToList());
+            return View("Index", user.ShoppingCart);
         }
 
         public async Task<IActionResult> RemoveOneFromCart(string CartItemId)
@@ -99,7 +97,7 @@ namespace sample_ecommerce_website.Controllers
 
             await _userManager.UpdateAsync(user);
 
-            return View("Index", user.ShoppingCart.CartItems.ToList());
+            return View("Index", user.ShoppingCart);
         }
 
         public async Task<IActionResult> ChangeItemQuantityInCart(string CartItemId, int NewQuantity)
@@ -139,10 +137,10 @@ namespace sample_ecommerce_website.Controllers
 
             await _userManager.UpdateAsync(user);
 
-            return View("Index", user.ShoppingCart.CartItems.ToList());
+            return View("Index", user.ShoppingCart);
         }
 
-        public async Task<IActionResult> RemoveFromCart(string itemId)
+        public async Task<IActionResult> RemoveFromCart(string ProductId)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -151,16 +149,16 @@ namespace sample_ecommerce_website.Controllers
             }
             List<CartItem> cart = user.ShoppingCart.CartItems.ToList();
 
-            int index = cart.FindIndex(item => item.ProductId == itemId);
+            int index = cart.FindIndex(item => item.ProductId == ProductId);
             int quantity = cart[index].Quantity;
             cart.RemoveAt(index);
             user.ShoppingCart.CartItems = cart;
 
             user.ShoppingCart.ItemQuantity -= quantity;
-            user.ShoppingCart.Total -= _context.Products.Find(itemId).Price * quantity;
+            user.ShoppingCart.Total -= _context.Products.Find(ProductId).Price * quantity;
             await _userManager.UpdateAsync(user);
 
-            return View("Index", user.ShoppingCart.CartItems.ToList());
+            return View("Index", user.ShoppingCart);
         }
 
         public async Task<IActionResult> EmptyCart()
@@ -177,7 +175,7 @@ namespace sample_ecommerce_website.Controllers
             user.ShoppingCart.Total = 0;
             await _userManager.UpdateAsync(user);
 
-            return View("Index", user.ShoppingCart.CartItems.ToList());
+            return View("Index", user.ShoppingCart);
         }
     }
 }

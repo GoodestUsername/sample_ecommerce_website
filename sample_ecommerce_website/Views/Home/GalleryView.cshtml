@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-body text-center">
-                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = product.ProductId })><h5 class="card-title">@product.Name</h5></a>
+                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { ProductId = product.ProductId })><h5 class="card-title">@product.Name</h5></a>
                 <h4 class="card-text ">$@product.Price</h4>
             </div>
         </div>

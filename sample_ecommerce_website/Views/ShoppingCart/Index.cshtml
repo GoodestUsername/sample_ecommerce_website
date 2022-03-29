@@ -7,23 +7,24 @@
         <h1>Cart</h1>
         <h1> You have @Model.ItemQuantity items in cart</h1>
         <h1>Cart total @Model.Total</h1>
-        <table class="table table-bordered table-striped">
 
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantities</th>
-                </tr>
-            </thead>
-            @if (Model == null)
-            {
+        @if (Model.CartItems == null)
+        {
+            <h2>Your Cart is empty</h2>
+        }
+        else
+        {
+            <table class="table table-bordered table-striped">
 
-            }
-            else
-            {
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantities</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    @foreach (var cartItem in Model.CartItems)
+                    @foreach (var cartItem in Model.CartItems.ToList())
                     {
                         <tr>
                             <td>
@@ -32,14 +33,15 @@
                             <td>@cartItem.Product.Price</td>
                             <td>@cartItem.Quantity</td>
                             <td>
-                                <a asp-controller="ShoppingCart" asp-action="RemoveOneFromCart" asp-route-id="@cartItem.CartItemId">Remove one</a>
-                                <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@cartItem.CartItemId">Add one</a>
-                                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartItem.CartItemId">Delete</a>
+                                <a href=@Url.Action(action: "RemoveOneFromCart", controller:"ShoppingCart", values:new { CartItemId = cartItem.CartItemId })>Remove one</a>
+                                <a href=@Url.Action(action: "AddToCart", controller:"ShoppingCart", values:new { ProductId = cartItem.ProductId })>Add one</a>
+                                <a href=@Url.Action(action: "RemoveFromCart", controller:"ShoppingCart", values:new { ProductId = cartItem.ProductId })>Delete</a>
                             </td>
                         </tr>
                     }
                 </tbody>
-            }
-        </table>
+            </table>
+            <a href=@Url.Action(action:"Checkout", controller:"Order") class="btn btn-default" title="Details">Proceed to Checkout</a>
+        }
     </div>
 </div>
