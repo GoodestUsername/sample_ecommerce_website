@@ -63,7 +63,7 @@
             <div class="col-md-12">
 @*                <a href=@Url.Action(action: "ProductView", controller:"Product", values:new { itemId = product.ProductId })><h5 class="card-title">@product.Name</h5></a>
 *@
-                <a href=@Url.Action(action:"AddToCart", controller:"ShoppingCart", values:new { itemId= Model.ProductId }) class="btn btn-default" title="Details"> <i class="fas fa-shopping-cart"></i>Add to Cart</a>
+                <a href=@Url.Action(action:"AddToCart", controller:"ShoppingCart", values:new { ProductId= Model.ProductId }) class="btn btn-default" title="Details"> <i class="fas fa-shopping-cart"></i>Add to Cart</a>
                 @*                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>*@
             </div>
         </div>

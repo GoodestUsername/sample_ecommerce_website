@@ -33,7 +33,7 @@ namespace sample_ecommerce_website.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Checkout()
+        public async Task<IActionResult> CheckoutView()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
