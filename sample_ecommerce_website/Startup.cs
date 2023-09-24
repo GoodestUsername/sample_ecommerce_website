@@ -20,7 +20,6 @@ namespace sample_ecommerce_website
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            var stripe_secret = configuration["STRIPE_KEY"];
         }
 
         public IConfiguration Configuration { get; }
@@ -55,9 +54,7 @@ namespace sample_ecommerce_website
                 config.Cookie.Name = "Access.Cookie";
                 config.LoginPath = "/Home/Authenticate";
             });
-            
-
-
+            services.AddSingleton<IConfiguration>(Configuration);
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

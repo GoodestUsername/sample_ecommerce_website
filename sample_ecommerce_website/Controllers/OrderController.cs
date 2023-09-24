@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
 
@@ -15,6 +16,7 @@ namespace sample_ecommerce_website.Controllers
     {
         private readonly ProductDBModel _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IConfiguration _configuration;
 
         public class AddressViewModel
         {
@@ -26,11 +28,13 @@ namespace sample_ecommerce_website.Controllers
         }
 
         public OrderController(UserManager<ApplicationUser> userManager,
-            ProductDBModel context)
+            ProductDBModel context, IConfiguration configuration)
         {
             _userManager = userManager;
-
             _context = context;
+            _configuration = configuration;
+            var stripe_secret = configuration["STRIPE_KEY"];
+            Console.WriteLine("secret", stripe_secret);
         }
 
         public async Task<IActionResult> CheckoutView()
