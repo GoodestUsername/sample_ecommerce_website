@@ -20,6 +20,7 @@ namespace sample_ecommerce_website
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            var stripe_secret = configuration["STRIPE_KEY"];
         }
 
         public IConfiguration Configuration { get; }
