@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
+using Stripe;
+using Stripe.Checkout;
 
 namespace sample_ecommerce_website.Controllers
 {
@@ -17,6 +19,8 @@ namespace sample_ecommerce_website.Controllers
         private readonly ProductDBModel _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
+
+        public string SessionId { get; set; }
 
         public class AddressViewModel
         {
@@ -66,10 +70,65 @@ namespace sample_ecommerce_website.Controllers
             return View("AddressConfirmation", ViewModel);
         }
 
-        public async Task<IActionResult> CreateOrder()
+        public async Task<IActionResult> ConfirmOrder()
         {
             
-            return View();
+            return View("ConfirmOrder");
+        }
+
+
+        public IActionResult CreateOrder(string amount)
+        {
+
+            var currency = "cad"; // Currency code
+            var successUrl = "https://localhost:44371/Order/Success";
+            var cancelUrl = "https://localhost:44371/Order/Cancel";
+            StripeConfiguration.ApiKey = _configuration["STRIPE_KEY"];
+
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string>
+                {
+                    "card"
+                },
+                LineItems = new List<SessionLineItemOptions>
+                {
+                    new SessionLineItemOptions
+                    {
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            Currency = currency,
+                            UnitAmount = Convert.ToInt32(amount) * 100,  // Amount in smallest currency unit (e.g., cents)
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = "TEST12345",
+                                Description = "Product Description"
+                            }
+                        },
+                        Quantity = 1
+                    }
+                },
+                Mode = "payment",
+                SuccessUrl = successUrl,
+                CancelUrl = cancelUrl
+            };
+
+            var service = new SessionService();
+            var session = service.Create(options);
+            SessionId = session.Id;
+
+            return Redirect(session.Url);
+        }
+
+        public IActionResult Success()
+        {
+
+            return View("SuccessView");
+        }
+
+        public IActionResult Cancel()
+        {
+            return View("CancelView");
         }
     }
 }
