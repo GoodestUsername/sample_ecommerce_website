@@ -361,7 +361,7 @@ namespace sample_ecommerce_website.Migrations
                     { "eeef3006-2ada-4811-97fc-e4ca42e336a8", "https://i5.walmartimages.com/asr/b2f830f2-c6df-4262-a764-ab65cccc2b2d.3e80a3fbe05918fe7e59e91b15e8ab2a.jpeg", "d549e4fe-bb29-476d-a3ae-c7533c44773c" },
                     { "bf3be07b-d65e-4796-8aff-d2b9315fe9ec", "https://i.ebayimg.com/00/s/MTE3NlgxMTc2/z/ZBsAAOSwWWxY-cVZ/$_12.JPG", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
                     { "951bc77e-9d11-4ffa-8452-e8185bcf6f08", "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/386/1664/DiabloNemesisTakara1NWM__38445.1587767442.jpg?c=2", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
-                    { "2767d0eb-5ac0-4709-872c-107d6b05af76", "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/414/827/s-l1600__21220.1535822191.jpg?c=2", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
+                    { "2767d0eb-5ac0-4709-872c-107d6b05af76", "https://i.ebayimg.com/images/g/e-cAAOSw0vJckZG2/s-l1200.jpg", "66b879cf-637f-4f29-843d-03a60e35d9e5" },
                     { "f1311d0c-78f1-492c-9f90-a5f9d62c988e", "https://images-na.ssl-images-amazon.com/images/I/71k4SkSUIIL._AC_SL1500_.jpg", "464aa345-82ef-4e6b-98b4-ea5e6db4ac69" },
                     { "194ac58f-c2a4-43b6-9d08-6a324a040350", "https://i.ebayimg.com/images/g/jKQAAOSwc2dfbBIH/s-l640.jpg", "463005ef-ba02-4ac4-b369-eaf5db49b358" }
                 });

@@ -93,7 +93,7 @@ namespace sample_ecommerce_website.Models.DAL
                 new Image { ProductId = LibraID, ImageId = "eeef3006-2ada-4811-97fc-e4ca42e336a8", ImageURL = "https://i5.walmartimages.com/asr/b2f830f2-c6df-4262-a764-ab65cccc2b2d.3e80a3fbe05918fe7e59e91b15e8ab2a.jpeg" },
                 new Image { ProductId = DNemesisID, ImageId = "bf3be07b-d65e-4796-8aff-d2b9315fe9ec", ImageURL = "https://i.ebayimg.com/00/s/MTE3NlgxMTc2/z/ZBsAAOSwWWxY-cVZ/$_12.JPG" },
                 new Image { ProductId = DNemesisID, ImageId = "951bc77e-9d11-4ffa-8452-e8185bcf6f08", ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/386/1664/DiabloNemesisTakara1NWM__38445.1587767442.jpg?c=2" },
-                new Image { ProductId = DNemesisID, ImageId = "2767d0eb-5ac0-4709-872c-107d6b05af76", ImageURL = "https://cdn11.bigcommerce.com/s-iodt3qca/images/stencil/1280x1280/products/414/827/s-l1600__21220.1535822191.jpg?c=2" },
+                new Image { ProductId = DNemesisID, ImageId = "2767d0eb-5ac0-4709-872c-107d6b05af76", ImageURL = "https://i.ebayimg.com/images/g/e-cAAOSw0vJckZG2/s-l1200.jpg" },
                 new Image { ProductId = GPersuesID, ImageId = "f1311d0c-78f1-492c-9f90-a5f9d62c988e", ImageURL = "https://images-na.ssl-images-amazon.com/images/I/71k4SkSUIIL._AC_SL1500_.jpg" },
                 new Image { ProductId = HKerbecsID, ImageId = "194ac58f-c2a4-43b6-9d08-6a324a040350", ImageURL = "https://i.ebayimg.com/images/g/jKQAAOSwc2dfbBIH/s-l640.jpg" }
                 );
