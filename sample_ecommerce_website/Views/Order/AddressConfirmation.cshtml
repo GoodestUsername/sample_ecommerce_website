@@ -7,106 +7,106 @@
 }
 
 <h4>@ViewData["Title"]</h4>
-<div class="row">
-    <div class="col-md-6">
-        <div class="card-deck">
-            @if (Model.HomeAddress != null)
-            {
-                <form id="change-update-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            @Model.HomeAddress.Name
-                            <br />
-                            @Model.HomeAddress.AddressLine1
-                            <br />
-                            @if (Model.HomeAddress.AddressLine2 != null)
-                            {
-                                @Model.HomeAddress.AddressLine2
-                                <br />
-                            }
-                            @Model.HomeAddress.City, @Model.HomeAddress.Province @Model.HomeAddress.PostalCode
-                            <br />
-                            @Model.HomeAddress.Country
-                        </div>
-                    </div>
-                </form>
-            }
 
-            else
-            {
-                <form id="add-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            <button type="submit" value=@AddressTypes.HomeAddress class="btn btn-primary">Add Home Address</button>
-                        </div>
-                    </div>
-                </form>
-            }
+<div class="card-deck">
+    @if (Model.HomeAddress != null)
+    {
+        <form id="change-update-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    @Model.HomeAddress.Name
+                    <br />
+                    @Model.HomeAddress.AddressLine1
+                    <br />
+                    @if (Model.HomeAddress.AddressLine2 != null)
+                    {
+                        @Model.HomeAddress.AddressLine2
+                        <br />
+                    }
+                    @Model.HomeAddress.City, @Model.HomeAddress.Province @Model.HomeAddress.PostalCode
+                    <br />
+                    @Model.HomeAddress.Country
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form id="add-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    <button type="submit" value=@AddressTypes.HomeAddress class="btn btn-primary">Add Home Address</button>
+                </div>
+            </div>
+        </form>
+    }
 
-            @if (Model.BillingAddress != null)
-            {
-                <form id="change-update-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            @Model.BillingAddress.Name
-                            <br />
-                            @Model.BillingAddress.AddressLine1
-                            <br />
-                            @if (Model.BillingAddress.AddressLine2 != null)
-                            {
-                                @Model.BillingAddress.AddressLine2
-                                <br />
-                            }
-                            @Model.BillingAddress.City, @Model.BillingAddress.Province @Model.BillingAddress.PostalCode
-                            <br />
-                            @Model.BillingAddress.Country
-                        </div>
-                    </div>
-                </form>
-            }
+    @if (Model.BillingAddress != null)
+    {
+        <form id="change-update-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    @Model.BillingAddress.Name
+                    <br />
+                    @Model.BillingAddress.AddressLine1
+                    <br />
+                    @if (Model.BillingAddress.AddressLine2 != null)
+                    {
+                        @Model.BillingAddress.AddressLine2
+                        <br />
+                    }
+                    @Model.BillingAddress.City, @Model.BillingAddress.Province @Model.BillingAddress.PostalCode
+                    <br />
+                    @Model.BillingAddress.Country
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form id="add-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    <button type="submit" value=@AddressTypes.BillingAddress class="btn btn-primary">Add Billing Address</button>
+                </div>
+            </div>
+        </form>
+    }
+    
+    @if (Model.ShippingAddress != null)
+    {
+        <form id="change-update-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    @Model.ShippingAddress.Name
+                    <br />
+                    @Model.ShippingAddress.AddressLine1
+                    <br />
+                    @if (Model.ShippingAddress.AddressLine2 != null)
+                    {
+                        @Model.ShippingAddress.AddressLine2
+                        <br />
+                    }
+                    @Model.ShippingAddress.City, @Model.ShippingAddress.Province @Model.ShippingAddress.PostalCode
+                    <br />
+                    @Model.ShippingAddress.Country
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form id="add-address-form" method="post">
+            <div class="card-with-borders card-block mx-2 border border-dark rounded">
+                <div class="card-body-text-only">
+                    <button type="submit" value=@AddressTypes.ShippingAddress class="btn btn-primary">Add Shipping Address</button>
+                </div>
+            </div>
+        </form>
+    }
+</div>
 
-            else
-            {
-                <form id="add-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            <button type="submit" value=@AddressTypes.BillingAddress class="btn btn-primary">Add Billing Address</button>
-                        </div>
-                    </div>
-                </form>
-            }
-            @if (Model.ShippingAddress != null)
-            {
-                <form id="change-update-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            @Model.ShippingAddress.Name
-                            <br />
-                            @Model.ShippingAddress.AddressLine1
-                            <br />
-                            @if (Model.ShippingAddress.AddressLine2 != null)
-                            {
-                                @Model.ShippingAddress.AddressLine2
-                                <br />
-                            }
-                            @Model.ShippingAddress.City, @Model.ShippingAddress.Province @Model.ShippingAddress.PostalCode
-                            <br />
-                            @Model.ShippingAddress.Country
-                        </div>
-                    </div>
-                </form>
-            }
-
-            else
-            {
-                <form id="add-address-form" method="post">
-                    <div class="card-with-borders card-block mx-2 border border-dark rounded">
-                        <div class="card-body-text-only">
-                            <button type="submit" value=@AddressTypes.ShippingAddress class="btn btn-primary">Add Shipping Address</button>
-                        </div>
-                    </div>
-                </form>
-            }
-        </div>
-    </div>
+<div>
+    <a asp-action="Index">Proceed to Overview</a>
+    <a href=@Url.Action(action:"Index", controller:"ShoppingCart") class="btn btn-default" title="Back">Back to Cart</a>
 </div>

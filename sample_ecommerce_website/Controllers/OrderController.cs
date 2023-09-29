@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using sample_ecommerce_website.Models;
 using sample_ecommerce_website.Models.DAL;
@@ -70,16 +72,8 @@ namespace sample_ecommerce_website.Controllers
             return View("AddressConfirmation", ViewModel);
         }
 
-        public async Task<IActionResult> ConfirmOrder()
-        {
-            
-            return View("ConfirmOrder");
-        }
-
-
         public IActionResult CreateOrder(string amount)
         {
-
             var currency = "cad"; // Currency code
             var successUrl = "https://localhost:44371/Order/Success";
             var cancelUrl = "https://localhost:44371/Order/Cancel";
@@ -128,7 +122,7 @@ namespace sample_ecommerce_website.Controllers
 
         public IActionResult Cancel()
         {
-            return View("CancelView");
+            return RedirectToAction("index", "ShoppingCart");
         }
     }
 }

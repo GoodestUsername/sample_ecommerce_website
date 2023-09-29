@@ -3,15 +3,12 @@
     ViewData["Title"] = "Checkout";
 }
 
-<h1>Checkout</h1>
-
 @model ShoppingCart
+<h1>Checkout</h1>
 
 <div class="row">
     <div class="col-md-6">
-        <h1>Checkout</h1>
-        <h1>Cart total @Model.Total</h1>
-        <a href=@Url.Action(action:"GoToAddressConfirmation", controller:"Order") class="btn btn-default" title="Details">Proceed to Checkout</a>
+        <h1>Cart total @Math.Round(Model.Total, 2)</h1>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -34,13 +31,12 @@
         <form method="post" action="/Order/CreateOrder">
             <!-- Form fields -->
             <div>
-                <label for="name">Amount:</label>
-                <input type="text" id="amount" name="amount" value="" />
+                <label for="name">Amount: @Math.Round(Model.Total, 2)</label>
             </div>
-
 
             <!-- Submit button -->
             <button type="submit">Checkout</button>
         </form>
+        @* <a href=@Url.Action(action:"GoToAddressConfirmation", controller:"Order") class="btn btn-default" title="Details">Proceed to Shipping Address</a> *@
     </div>
 </div>
