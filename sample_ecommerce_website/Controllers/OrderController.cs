@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using FoolProof.Core;
 using Hangfire;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,10 +28,22 @@ namespace sample_ecommerce_website.Controllers
 
         public class AddressViewModel
         {
-            public UserAddress HomeAddress { get; set; }
+            [Required]
+            public bool UseBillingAsShipping{ get; set; }
 
+            [RequiredIfTrue("UseBillingAsShipping")]
+            public bool UseSavedBillingAddress { get; set; }
+            
+            [RequiredIfFalse("UseBillingAsShipping")]
+            public bool UseSavedShippingAddress { get; set; }
+
+            public bool SaveBillingAddress { get; set; }
+            public bool SaveShippingAddress { get; set; }
+
+            [RequiredIfFalse("UseBillingAsShipping")]
             public UserAddress BillingAddress { get; set; }
 
+            [RequiredIfFalse("UseSavedShippingAddress")]
             public UserAddress ShippingAddress { get; set; }
         }
 
@@ -62,14 +76,31 @@ namespace sample_ecommerce_website.Controllers
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+
             AddressViewModel ViewModel = new AddressViewModel
             {
-                HomeAddress = user.HomeAddress,
+                UseBillingAsShipping = true,
+                UseSavedBillingAddress = true,
+                UseSavedShippingAddress = true,
+                SaveBillingAddress = false,
+                SaveShippingAddress = false,
                 BillingAddress = user.BillingAddress,
                 ShippingAddress = user.ShippingAddress
             };
-         
+
             return View("AddressConfirmation", ViewModel);
+        }
+
+        public async Task<IActionResult> ConfirmOrder(AddressViewModel test)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            // make test for if either are enabled
+            var car = test;
+            return View("ConfirmOrder");
         }
 
         public IActionResult CreateOrder(string amount)
