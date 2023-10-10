@@ -80,8 +80,8 @@ namespace sample_ecommerce_website.Controllers
             AddressViewModel ViewModel = new AddressViewModel
             {
                 UseBillingAsShipping = true,
-                UseSavedBillingAddress = true,
-                UseSavedShippingAddress = true,
+                UseSavedBillingAddress = !user.BillingAddress?.IsAllMandatoryFieldsNull() ?? true,
+                UseSavedShippingAddress = !user.ShippingAddress?.IsAllMandatoryFieldsNull() ?? true,
                 SaveBillingAddress = false,
                 SaveShippingAddress = false,
                 BillingAddress = user.BillingAddress,

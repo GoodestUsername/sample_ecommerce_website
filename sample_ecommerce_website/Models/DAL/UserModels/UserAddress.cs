@@ -63,5 +63,19 @@ namespace sample_ecommerce_website.Models
         [Display(Name = "Country")]
         [Required(ErrorMessage = "Country is required")]
         public virtual string Country { get; set; }
+
+        public bool IsAllMandatoryFieldsNull()
+        {
+            return this.Name == null && this.AddressLine1 == null &&
+                this.City == null && this.Province == null && this.PostalCode == null &&
+                this.Country == null;
+        }
+
+        public bool IsAnyMandatoryFieldsNull()
+        {
+            return this.Name == null || this.AddressLine1 == null ||
+                this.City == null || this.Province == null || this.PostalCode == null ||
+                this.Country == null;
+        }
     }
 }

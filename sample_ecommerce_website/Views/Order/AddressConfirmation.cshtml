@@ -14,10 +14,16 @@
             <div id="shippingForm">
                 <h3>Delivery Method</h3>
                 <div id="shippingFormDetails">
-                    <div class="form-group form-inline">
-                        <input id="useSavedShippingToggleButton" asp-for="UseSavedShippingAddress" /><p class="mb-0 pl-2">Use saved shipping address</p>
-                    </div>
-                    <div id="shippingFormInputs" style="display: none;">
+                    @{
+                        if (!(Model.ShippingAddress?.IsAnyMandatoryFieldsNull() ?? true))
+                        {
+                            <div class="form-group form-inline">
+                                <input id="useSavedShippingToggleButton" asp-for="UseSavedShippingAddress" /><p class="mb-0 pl-2">Use saved shipping address</p>
+                            </div>
+                            <div id="savedShippingData" style="display: block;">@Model.ShippingAddress?.AddressLine1, @Model.ShippingAddress?.Name</div>
+                        }
+                    }
+                    <div id="shippingFormInputs" style="display: @(Model.ShippingAddress?.IsAnyMandatoryFieldsNull() ?? true ? "block;" : "none;")">
                         <div class="form-group">
                             <label asp-for=ShippingAddress.Name></label>
                             <input asp-for=ShippingAddress.Name class="form-control" />
@@ -65,10 +71,16 @@
                     <input id="shippingAsBillingToggleButton" asp-for="UseBillingAsShipping" /><p class="mb-0 pl-2">Same as Shipping</p>
                 </div>
                 <div id="billingFormDetails" style="display: none;">
-                    <div class="form-group form-inline">
-                        <input id="useSavedBillingToggleButton" asp-for="UseSavedBillingAddress" /><p class="mb-0 pl-2">Use saved billing address</p>
-                    </div>
-                    <div id="billingFormInputs" style="display: none;">
+                    @{
+                        if (!Model.BillingAddress?.IsAnyMandatoryFieldsNull() ?? true)
+                        {
+                            <div class="form-group form-inline">
+                                <input id="useSavedBillingToggleButton" asp-for="UseSavedBillingAddress" /><p class="mb-0 pl-2">Use saved billing address</p>
+                            </div>
+                            <div id="savedBillingData" style="display: block;">@Model.BillingAddress?.AddressLine1, @Model.BillingAddress?.Name</div>
+                        }
+                    }
+                    <div id="billingFormInputs" style="display: @((Model.BillingAddress?.IsAnyMandatoryFieldsNull() ?? true) ? "block;" : "none;")">
                         <div class="form-group">
                             <label asp-for=BillingAddress.AddressLine1></label>
                             <input asp-for=BillingAddress.AddressLine1 class="form-control" />
@@ -105,6 +117,7 @@
         </form>
     </div>
 </div>
+
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
         const shipAsBillToggleBtn = document.getElementById("shippingAsBillingToggleButton");
@@ -115,16 +128,31 @@
         const billFormInputs = document.getElementById("billingFormInputs");
         const billFormDetails = document.getElementById("billingFormDetails");
 
+        const savedShipAddress = document.getElementById("savedShippingData");
+        const savedBillAddress = document.getElementById("savedBillingData");
+
         shipAsBillToggleBtn.addEventListener("click", () => {
             billFormDetails.style.display = billFormDetails.style.display === "block"? "none": "block";
         });
 
         useSavedShipToggleBtn.addEventListener("click", () => {
-            shipFormInputs.style.display = shipFormInputs.style.display === "block" ? "none" : "block";
+            if (shipFormInputs.style.display === "block") {
+                shipFormInputs.style.display = "none";
+                savedShipAddress.style.display = "block";
+            } else {
+                shipFormInputs.style.display = "block";
+                savedShipAddress.style.display = "none";
+            }
         });
 
         useSavedBillToggleBtn.addEventListener("click", () => {
-            billFormInputs.style.display = billFormInputs.style.display === "block" ? "none" : "block";
+            if (billFormInputs.style.display === "block") {
+                billFormInputs.style.display = "none";
+                savedBillAddress.style.display = "block";
+            } else {
+                billFormInputs.style.display = "block";
+                savedBillAddress.style.display = "none";
+            }
         });
     });
 </script>
