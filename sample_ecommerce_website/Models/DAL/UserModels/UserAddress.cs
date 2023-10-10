@@ -25,8 +25,8 @@ namespace sample_ecommerce_website.Models
 
         [PersonalData]
         [StringLength(200)]
-        [Display(Name = "Name of recipiant")]
-        [Required(ErrorMessage = "Name of recipiant is required")]
+        [Display(Name = "Full Name")]
+        [Required(ErrorMessage = "Full name is required")]
         public virtual string Name { get; set; }
 
         [PersonalData]

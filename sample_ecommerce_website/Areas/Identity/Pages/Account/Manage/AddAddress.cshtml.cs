@@ -28,8 +28,8 @@ namespace sample_ecommerce_website.Areas.Identity.Pages.Account
         {
             [PersonalData]
             [StringLength(200)]
-            [Display(Name = "Name of recipiant")]
-            [Required(ErrorMessage = "Name of recipiant is required")]
+            [Display(Name = "Full name")]
+            [Required(ErrorMessage = "Full name of is required")]
             public virtual string Name { get; set; }
 
             [PersonalData]
