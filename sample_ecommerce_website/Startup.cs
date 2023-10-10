@@ -1,3 +1,4 @@
+using FoolProof.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -57,6 +58,7 @@ namespace sample_ecommerce_website
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddFoolProof();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
